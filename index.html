@@ -6,6 +6,7 @@
     <title>ฺBLA Happy Life | ตัวแทนประกันชีวิต</title>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Sarabun:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
             --primary: #4f46e5;
@@ -18,6 +19,10 @@
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --primary: #1a3e72;
+            --secondary: #e63946;
+            --white: #ffffff;
+            --black: #333333;
         }
 
         * {
@@ -27,13 +32,196 @@
         }
 
         body {
-            font-family: 'Sarabun', 'Kanit', sans-serif;
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
+            font-family: 'Sukhumvit Set', 'Kanit', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--black);
+        }
+        .highlight-yellow {
+            background-color: rgba(247, 230, 2, 0.712); /* สีเหลืองโปร่งแสง */
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+     
+        
+        p {
+            margin-bottom: 15px;
         }
         
-
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .highlight {
+            font-weight: bold;
+            color: #1a3e72;
+        }
+        
+        .emphasis {
+            font-weight: bold;
+        }
+        
+        .note {
+            margin-top: 20px;
+            font-style: italic;
+        }
+         /* Menu Bar Styles - จัดกลาง */
+         .menu-container {
+            display: flex;
+            justify-content: center;
+            background-color: var(--primary);
+            padding: 10px 0;
+        }
+        
+        .menu-bar {
+            display: inline-flex;
+            background-color: var(--primary);
+        }
+        
+        .menu-items {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .menu-item {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            position: relative;
+            padding: 10px 0;
+            white-space: nowrap;
+            font-size: 16px;
+        }
+        
+        .menu-item i.fa-check {
+            color: #4caf50;
+        }
+        
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--white);
+            min-width: 220px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .dropdown-content a {
+            color: var(--black);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #f5f5f5;
+            padding-left: 20px;
+        }
+        
+        .dropdown-content i {
+            color: var(--primary);
+            margin-right: 8px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Right Slide Menu */
+        .slide-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100%;
+            background-color: var(--white);
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .slide-menu.active {
+            right: 0;
+        }
+        
+        .slide-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .slide-menu h3 {
+            color: var(--primary);
+            margin: 0;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--secondary);
+        }
+        
+        .slide-menu-content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .slide-menu-link {
+            color: var(--primary);
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .slide-menu-link:hover {
+            background-color: #f0f4f8;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 999;
+            display: none;
+        }
+        
+        .overlay.active {
+            display: block;
+        }
         /* Hero Section */
         .hero {
             position: relative;
@@ -722,28 +910,87 @@
     color: #4f46e5;
     transition: color 0.3s ease;
 }
+
+
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="logo">
-                <img src="pf.png" alt="Company Logo">
-           </div>
-           By Kitiya Saowakul BLA Wealth financial advisor ตัวแทนประกันชีวิต
-            <h1>กรุงเทพประกันชีวิต BLA Happy Health Premier – ประกัน</h1>
-            <p class="tagline">สุขภาพเหมาจ่าย by กิติยา เสาวกุล ตัวแทนคุณภาพ </p>
-            <div>
-                <a href="#contact" class="cta-button">
-                    <i class="fas fa-envelope"></i> ติดต่อเรา
-                </a>
-                <a href="#services" class="cta-button" style="background: transparent; color: var(--white); border: 2px solid var(--white);">
-                    <i class="fas fa-list"></i> บริการของเรา
-                </a>
+  <!-- Menu Bar Container -->
+  <div class="menu-container">
+    <div class="menu-bar">
+        <div class="menu-items">
+            <div class="dropdown">
+                <a href="#" class="menu-item">ผลิตภัณฑ์ <i class="fas fa-chevron-down" style="font-size: 12px;"></i></a>
+                <div class="dropdown-content">
+                    <a href="#" id="life-insurance-link"><i class="fas fa-shield-alt"></i> ประกันชีวิต/Life Insurance</a>
+                    <a href="#"><i class="fas fa-heartbeat"></i> ประกันสุขภาพ/Health Insurance</a>
+                </div>
             </div>
+            <a href="#" class="menu-item">บริการ <i class="fas fa-check"></i></a>
+            <a href="#" class="menu-item">บทความ <i class="fas fa-check"></i></a>
+            <a href="#" class="menu-item">ร่วมงานกับเรา</a>
+            <a href="#" class="menu-item">เกี่ยวกับเรา</a>
         </div>
-    </section>
+    </div>
+</div>
+
+<!-- Right Slide Menu -->
+<div class="overlay" id="overlay"></div>
+<div class="slide-menu" id="slideMenu">
+    <div class="slide-menu-header">
+        <h3>ประกันชีวิต/Life Insurance</h3>
+        <button class="close-btn" id="closeBtn"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="slide-menu-content">
+        <a href="#" class="slide-menu-link">แผนประกันชีวิตพื้นฐาน</a>
+        <a href="#" class="slide-menu-link">แผนประกันชีวิตแบบสะสมทรัพย์</a>
+        <a href="#" class="slide-menu-link">แผนประกันชีวิตแบบตลอดชีพ</a>
+        <a href="#" class="slide-menu-link">แผนประกันชีวิตแบบชำระเบี้ยจำกัด</a>
+        <a href="#" class="slide-menu-link">แผนประกันชีวิตแบบบำนาญ</a>
+        <a href="#" class="slide-menu-link">แผนประกันชีวิตแบบคุ้มครองโรคร้ายแรง</a>
+    </div>
+</div>
+
+<script>
+    document.getElementById('life-insurance-link').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('slideMenu').classList.add('active');
+        document.getElementById('overlay').classList.add('active');
+    });
+    
+    document.getElementById('closeBtn').addEventListener('click', function() {
+        document.getElementById('slideMenu').classList.remove('active');
+        document.getElementById('overlay').classList.remove('active');
+    });
+    
+    document.getElementById('overlay').addEventListener('click', function() {
+        document.getElementById('slideMenu').classList.remove('active');
+        this.classList.remove('active');
+    });
+</script>
+    
+ 
+ 
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="logo">
+            <img src="pf.png" alt="Company Logo">
+        </div>
+        By Kitiya Saowakul BLA Wealth financial advisor ตัวแทนประกันชีวิต
+        <h1>กรุงเทพประกันชีวิต BLA Happy Health Premier – ประกัน</h1>
+        <p class="tagline">สุขภาพเหมาจ่าย by กิติยา เสาวกุล ตัวแทนคุณภาพ </p>
+        <div>
+            <a href="#contact" class="cta-button">
+                <i class="fas fa-envelope"></i> ติดต่อเรา
+            </a>
+            <a href="#services" class="cta-button" style="background: transparent; color: var(--white); border: 2px solid var(--white);">
+                <i class="fas fa-list"></i> บริการของเรา
+            </a>
+        </div>
+    </div>
+</section>
 
 <!-- About Section -->
 <section class="section" id="about">
@@ -837,10 +1084,188 @@
         <div class="flex-container">อ้างอิงสถิติจาก <a href="https://www.bangkoklife.com/th/news/detail/320" target="_blank">
                www.bangkoklife.com/th/news/detail/320 
         </a></div>  
+
+
+
+
+
+<!-- ตารางผลประโยชน์ -->
+<div class="problem-section">
+    <div class="container-center">
+        <h2 class="problem-title">3. ตารางผลประโยชน์ BLA Happy Health Premier (Copay)</h2>
+        
+      
+        
+         <div class="flex-container">
+            <img src="t4.jpg" alt="ค่าห้องแพง" class="flex-image">
+        </div><br>
+        <div class="flex-container">ตารางผลประโยชน์ประกันสุขภาพเหมาจ่าย BLA Happy Health Premier</div>  
+        <div class="recommendation-section">
+            <h3></h3>
+            <p><strong>***1 หากซื้อแผน ‘deduct หรือ มีส่วนรับผิด’ สามารถใช้สิทธิ์ในหมวดที่ 6-13 โดยไม่ต้องจ่าย deduct ก่อนได้
+
+                <br><br>***2 หมวด 1: ค่าห้องระบุว่า 3,000 ต่อวันหรือเหมาจ่ายค่าห้องเดี่ยวเริ่มต้นของรพ. = หมายความว่า อันไหนมากกว่าจ่ายอันนั้น เช่น ค่าห้อง/อาหาร/บริการรพ.ของรพ.กรุงเทพ = 11,000 ฿ ก็จะจ่ายให้ 11,000 ฿ เต็ม ไม่ใช่จ่ายให้แค่ 3,000 ฿
                 
+                <br><br>*** หมวด7/8 เวลาได้ใบเสนอราคา คำว่าไม่คุ้มครอง ไม่ใช่ว่า ‘ไม่จ่าย’ แต่ในแผนนี้ไม่มีคุ้มครองในส่วนนี้</strong> </p>
             
+         </div>
+
+
+         <!-- จึดเด่นทั้ง HH และ HHP -->
+<div class="problem-section">
+    <div class="container-center">
+        <h2 class="problem-title">4. จุดเด่น ของทั้ง HH และ HHP</h2>
+        
+      
+        
+        
+      
+        <div class="recommendation-section">
+             
+            <p><strong>4.1 จ่ายค่าห้องตามจริง ตามอัตราห้องเดี่ยวเริ่มต้นของรพ.</strong><div class="recommendation-section"><p>ดังนั้นไม่ว่าค่าใช้จ่ายในรพ.(ทั้งค่าห้องและค่ารักษา ฯลฯ) จะเฟ้อแค่ไหน (ตามเอกสารอ้างอิงคือ ประมาณ 9% ต่อปี) เราก็จ่ายให้คุณ! 
+                แม้ว่าในหมวด 1 ของค่าห้อง HHP จะเขียนว่า 5,000 บาทหรือจ่ายตามอัตราห้องเดี่ยวเริ่มต้น คนร้อยละ 90% มักอ่านผ่านๆแล้วเข้าใจผิดว่า fix ค่าห้อง แต่เปล่าเลยครับ <br><strong><u>ตัวไหนมากกว่าจ่ายตัวนั้น!</u></strong></p>
+                
+                    
+                     
+                </div>
+                <p><strong>4.2 วงเงินค่ารักษาเป็น ‘ต่อโรคต่อปี’ และหากเจ็บป่วยจาก 3 โรคร้าย มะเร็ง หัวใจ หลอดเลือดสมอง จะได้รับวงเงินความคุ้มครองเพิ่มขึ้น 10%</strong><div class="recommendation-section"><p>เฉพาะ 3 โรคร้ายดังนี้ : โรคมะเร็ง โรคหัวใจ หรือโรคหลอดเลือดสมอง
+                    จากประสบการณ์ ค่ารักษาในหมวดนี้มักสูงอยู่ที่หลักแสนบาทถึงแตะๆล้านบาทได้เลยทีเดียว เนื่องจากการทำบอลลูนสวนหลอดเลือดหัวใจ คร่าวๆอยู่ที่ 2-3 แสน หรือการทำคีโมฯ (chemotherapy) ที่อิมพอร์ตยาคีโมฯจากต่างประเทศที่มีประสิทธิภาพสูงและราคาก็จะสูงขึ้นตาม ซึ่งการที่ได้รับวงเงินค่ารักษาเพิ่มขึ้นอีก 10% ก็จะทำให้เราอุ่นใจเรื่องค่ารักษาได้ เช่น จากวงเงินค่ารักษา 5,000,000 บาทเป็น 5,500,000 บาท เป็นต้น</p>
+                 </div>
+                  <p><strong>4.3. เหมาะกับคนที่มีสวัสดิการอยู่แล้ว และไม่อยากจ่ายเบี้ยแพง</strong><div class="recommendation-section"><p>เนื่องจากทั้ง HH และ HHP มีแผน deduct (รับผิดส่วนแรก) 30,000 และ 100,000 บาท ทำให้พนักงานออฟฟิศที่มีประกันกลุ่ม หรือแม้แต่ผู้ที่ถือประกันสุขภาพเล่มอื่นแล้วอยากเอา HH HHP มาโปะค่าห้อง หรือซื้อเสริม ไม่ต้องจ่ายเบี้ยแพงทั้งก้อน และประหยัดค่าเบี้ยไปได้มากถึง 50-70% เลยทีเดียว!</p>
+                 </div>
+                 <p><strong>4.4. มีความยืดหยุ่น</strong><div class="recommendation-section"><p>หากในช่วงวัยทำงานเรามีสวัสดิการอยู่ แต่พอช่วงเกษียณเราจะไม่มีสวัสดิการใดๆแล้ว BLA ให้สิทธิ์ในการสลับแผนจากแบบ “มีส่วนรับผิด”เป็น”ไม่มีส่วนรับผิด”ได้ในช่วงอายุ 55-65 ปี และจะต้องซื้อมาอย่างน้อย 5 ปีโดยนับความคุ้มครองให้ต่อเนื่องและไม่พิจารณาสุขภาพใหม่!
+                    (อ่านเพิ่มเติมใน FAQ)</p>
+                 </div>
+                 <p><strong>4.5. ประกันสุขภาพคุ้มครองถึง 99 ปีเลย!</strong><div class="recommendation-section"><p>ในช่วงตั้งแต่ปี 2564 และก่อนหน้า ประกันสุขภาพทั่วไปคุ้มครองสูงสุดเพียงอายุ 80 ปี หรือหากเป็นแผนเก่ากว่านั้นอาจคุ้มครองถึงแค่อายุ 70 ปี แต่เนื่องจากสถิติว่าคนไทยจะมีอายุยืนขึ้น ประกันสุขภาพทุกแผนของกรุงเทพประกันชีวิตจึง คุ้มครองถึงอายุ 99 ปี ทั้งหมด</p>
+                 </div>
+
+
+                 <p><strong>4.6 HH และ HHP เป็นประกันสุขภาพมาตรฐานใหม่ (New Standard Health)</p></strong>
+    
+                 <p>หลายๆท่านอาจจะได้ยินจากข่าว บริษัทประกัน "เท" บ้าง เคลมเยอะ ปรับเบี้ยรายบุคคลขึ้นเยอะบ้าง 
+                  พอปรับมาเป็น New Standard Health แล้วสิ่งที่เปลี่ยนไปคือ</p>
+                 
+                 <ul>
+                     <li>บริษัทประกันไม่สามารถเทลูกค้าได้แล้ว ยกเว้นลูกค้าปกปิดประวัติสุขภาพ ฯลฯ</li>
+                     <li>หากมีการเคลมเยอะกว่าปกติ บริษัทจะไม่ปรับเบี้ยประกันรายบุคคล แต่จะปรับอ้างอิงจากทุกคนที่ซื้อสินค้าเดียวกัน (portfolio)</li>
+                 </ul>
+                 
+                 <p>แม้ว่า HHP จะเป็นประกันสุขภาพเหมาจ่ายที่ปรับเบี้ยทุกๆ 5 ปีแล้ว อีกปัจจัยนึงที่สามารถส่งผลต่อการเพิ่มเบี้ยได้นั้น คือ <span class="highlight">"อัตราการเคลมของทุกคนที่ซื้อแผนประกันนั้นๆ/พอร์ตโฟลิโอ (portfolio)"</span> โดยหากอัตราการเคลมโดยเฉลี่ยสูงกว่ามาตรฐานที่บริษัทตั้งไว้มาก บริษัทประกันมีสิทธิ์ปรับเบี้ยเพิ่ม โดยจะต้องขออนุญาตคปภ.ก่อน และต้องแจ้งลูกค้าล่วงหน้าเป็นลายลักษณ์อักษรไม่น้อยกว่า 30 วัน ก่อนดำเนินการปรับเบี้ย</p>
+                 
+                 <p>โดยเงื่อนไขนี้เป็นเงื่อนไขใหม่ของประกันสุขภาพแบบ New Standard Health ไม่ว่าบริษัทไหน ก็จะใช้เกณฑ์เดียวกันทั้งหมดครับ โดยเฉพาะทุกๆสินค้าที่เปิดขายใหม่ตั้งแต่ประมาณปี 2019 นั้นล้วนใช้เงื่อนไข New Standard Health ทั้งสิ้น</p>
+                 
+                 <p class="emphasis">*****แม้สินค้าประกันสุขภาพจะเปิดตัวในช่วงโควิด19 ที่มีอัตราการเคลมประกันสูงมาก อย่างไรก็ตาม "ทุกสินค้า" ของ BLA ยังไม่เคยมีการปรับเบี้ยใดๆจากตารางเบี้ยที่ออกมา ณ ตอนเปิดตัวสินค้าเลย ไม่ว่าจะเป็นสินค้า BLA Happy Health หรือ BLA Prestige Health เองก็ตาม</p>
+                 
+                 <p class="note">จึงทำให้มั่นใจในบริษัทนี้มากๆ อย่างไรก็ตามไม่ได้หมายความว่าในอนาคตตารางเบี้ยจะไม่เปลี่ยนแปลง*</p>
+    
+    <div class="important-note">
+        <h4><i class="fas fa-exclamation-circle"></i> ข้อควรทราบเกี่ยวกับการปรับเบี้ย</h4>
+        <p>แม้ว่า HHP จะเป็นประกันสุขภาพเหมาจ่ายที่ปรับเบี้ยทุกๆ 5 ปีแล้ว อีกปัจจัยนึงที่สามารถส่งผลต่อการเพิ่มเบี้ยได้นั้น คือ <strong>"อัตราการเคลมของทุกคนที่ซื้อแผนประกันนั้นๆ/พอร์ตโฟลิโอ (portfolio)"</strong></p>
+        
+        <p>โดยหากอัตราการเคลมโดยเฉลี่ยสูงกว่ามาตรฐานที่บริษัทตั้งไว้มาก:</p>
+        <div class="important-note">
+            <li>บริษัทประกันมีสิทธิ์ปรับเบี้ยเพิ่ม</li>
+            <li>ต้องขออนุญาตคปภ.ก่อน</li>
+            <li>ต้องแจ้งลูกค้าล่วงหน้าเป็นลายลักษณ์อักษรไม่น้อยกว่า 30 วัน ก่อนดำเนินการปรับเบี้ย</li>
+        </div>
+    </div>
+    
+    <div class="standard-info">
+        <p>เงื่อนไขนี้เป็นเงื่อนไขใหม่ของประกันสุขภาพแบบ New Standard Health ไม่ว่าบริษัทไหน ก็จะใช้เกณฑ์เดียวกันทั้งหมด โดยเฉพาะทุกๆ สินค้าที่เปิดขายใหม่ตั้งแต่ประมาณปี 2019 นั้นล้วนใช้เงื่อนไข New Standard Health ทั้งสิ้น</p>
+    </div>
+     
+
+
+    
+    <div class="container-center">
+        <h2 class="problem-title">5. ข้อจำกัด HHP</h2>
+        <p><strong>5.1. ไม่มีประกันอุบัติเหตุ/มีแต่ให้น้อย (สามารถซื้อเพิ่มได้)</strong>
+    <p>แม้ว่าแผน BLA Happy Health จะไม่มีแถมประกันอุบัติเหตุให้ แต่เราสามารถซื้อสัญญาเพิ่มเติมเข้าไปได้ คือ</p>
+    <ul>
+        <li>ประกันอุบัติเหตุค่ารักษา หรือ (ชื่อใน BLA คือ อบ.3) เช่น ซื้อความคุ้มครองที่ 50,000 บาท</li>
+        <li>จ่ายค่ารักษาให้ 50,000 บาท ต่อเหตุการณ์</li>
+        <li>follow-up ได้ต่อเนื่อง 52 สัปดาห์หรือ 1 ปี และ</li>
+        <li>เบี้ย 'คงที่' ถึงอายุ 65 ปี</li>
+        <li>เบี้ยเพียงแค่ประมาณ <span class="price">1,000 บาทต่อปี</span> เท่านั้น!</li>
+    </ul>
+    
+    <p><strong>5.2. ไม่คุ้มครอง MRI, CT Scan แบบ OPD</strong>
+    <div class="recommendation">
+        <i class="fas fa-lightbulb"></i> แนะนำให้ดูแผน BLA Prestige Health ปลดล็อค แทน
+    </div>
+    
+    <p><strong>5.3 ไม่คุ้มครองต่างประเทศ</strong>
+    <div class="recommendation">
+        <p>แนะนำให้ซื้อประกันเดินทางมากกว่า โดยสามารถซื้อผ่านเราได้ที่ลิงค์นี้ <a href="#" class="cta-button">คลิกเพื่อซื้อประกันเดินทาง <i class="fas fa-arrow-right"></i></a></p>
+        
+    </div>
+    
+    <p><strong>5.4 ไม่คุ้มครองการรักษาด้วยการแพทย์แผนใหม่ๆ เช่น immunotherapy, stem cell therapy ฯลฯ </strong>
+    <p>อย่างไรก็ตามแผนนี้คุ้มครอง Targeted therapy (หรือ ยามุ่งเป้า) ซึ่งปัจจุบันถูกพิสูจน์แล้วว่ามีประสิทธิภาพกำจัดมะเร็งสูงมาก</p>
+    
+    <div class="highlight">
+        <p><strong>หากเรื่องวิธีการรักษาสำคัญสำหรับคุณมากๆ</strong> แนะนำแผน BLA Prestige Health ปลดล็อค แทน</p>
+    </div>
+    </p>
+</div>
+    <div class="container-center">
+        <h2 class="problem-title">5. ข้อจำกัด HHP</h2>
+        <p><strong>5.1. ไม่มีประกันอุบัติเหตุ/มีแต่ให้น้อย (สามารถซื้อเพิ่มได้)</strong>
+    <p>แม้ว่าแผน BLA Happy Health จะไม่มีแถมประกันอุบัติเหตุให้ แต่เราสามารถซื้อสัญญาเพิ่มเติมเข้าไปได้ คือ</p>
+    <ul>
+        <li>ประกันอุบัติเหตุค่ารักษา หรือ (ชื่อใน BLA คือ อบ.3) เช่น ซื้อความคุ้มครองที่ 50,000 บาท</li>
+        <li>จ่ายค่ารักษาให้ 50,000 บาท ต่อเหตุการณ์</li>
+        <li>follow-up ได้ต่อเนื่อง 52 สัปดาห์หรือ 1 ปี และ</li>
+        <li>เบี้ย 'คงที่' ถึงอายุ 65 ปี</li>
+        <li>เบี้ยเพียงแค่ประมาณ <span class="price">1,000 บาทต่อปี</span> เท่านั้น!</li>
+    </ul>
+    
+    <p><strong>5.2. ไม่คุ้มครอง MRI, CT Scan แบบ OPD</strong>
+    <div class="recommendation">
+        <i class="fas fa-lightbulb"></i> แนะนำให้ดูแผน BLA Prestige Health ปลดล็อค แทน
+    </div>
+    
+    <p><strong>5.3 ไม่คุ้มครองต่างประเทศ</strong>
+    <div class="recommendation">
+        <p>แนะนำให้ซื้อประกันเดินทางมากกว่า โดยสามารถซื้อผ่านเราได้ที่ลิงค์นี้ <a href="#" class="cta-button">คลิกเพื่อซื้อประกันเดินทาง <i class="fas fa-arrow-right"></i></a></p>
+        
+    </div>
+    
+    <p><strong>5.4 ไม่คุ้มครองการรักษาด้วยการแพทย์แผนใหม่ๆ เช่น immunotherapy, stem cell therapy ฯลฯ </strong>
+    <p>อย่างไรก็ตามแผนนี้คุ้มครอง Targeted therapy (หรือ ยามุ่งเป้า) ซึ่งปัจจุบันถูกพิสูจน์แล้วว่ามีประสิทธิภาพกำจัดมะเร็งสูงมาก</p>
+    
+    <div class="highlight">
+        <p><strong>หากเรื่องวิธีการรักษาสำคัญสำหรับคุณมากๆ</strong> แนะนำแผน BLA Prestige Health ปลดล็อค แทน</p>
+    </div>
+    </p>
+</div>
+
+
+
+
+
+
+
+<div class="container-center">
+    <h2 class="problem-title">6. ตารางเบี้ย HHP</h2>
+    <p><strong</strong>
+        <p>BLA Happy Health ค่าเบี้ยจะเพิ่มขึ้นทุก 5 ปี และมากไปกว่านั้น นอกจากอัตราการเพิ่มเบี้ยที่เป็นไปตามอาชีพ เพศ และช่วงอายุที่บริษัทได้กำหนดไว้ เช่น ทุก 5 ปีหรือทุกปี นอกเหนือจากข้อนี้ <span class="highlight-yellow">อัตราการเพิ่มเบี้ยจะขึ้นอยู่กับ "อัตราการเคลมของทุกคนที่ซื้อแผนประกันนั้นๆ/พอร์ตโฟลิโอ (portfolio)" โดยหากอัตราการเคลมโดยเฉลี่ยสูงกว่ามาตรฐานที่บริษัทตั้งไว้มาก บริษัทประกันมีสิทธิ์ปรับเบี้ยเพิ่ม โดยจะต้องขออนุญาตคปภ.ก่อน และต้องแจ้งลูกค้าล่วงหน้าเป็นลายลักษณ์อักษรไม่น้อยกว่า 30 วัน ก่อนดำเนินการปรับเบี้ย</span></p>
+ 
+
+<p><strong>ซึ่งสินค้าทุกชนิดที่เป็น New Standard Health ไม่ว่าบริษัทไหน ก็จะใช้เงื่อนไขเดียวกันทั้งหมดครับ</strong>
+ 
+
+ 
+<div class="recommendation">
+    <p>ในทางกลับกันลูกค้าจะไม่ต้องกังวลอีกต่อไปเรื่องบริษัทประกันจะไม่ต่อสัญญาลูกค้า เพราะเงื่อนไขนี้ถูกตัดออกใน New Standard Health เรียบร้อยแล้วครับสำหรับ BLA Happy Health ตารางเบี้ยดังกล่าวได้แสดงไว้ด้านล่างดังนี้</p>
+    
+</div>
+
+ 
+
+  
        
-    <!-- Services Section -->
+    <!-- Services Section 
     <section class="section services" id="services">
         <h2 class="section-title">บริการของเรา</h2>
         <div class="services-grid">
@@ -867,12 +1292,13 @@
             </div>
         </div>
     </section>
+    -->
 
 
 
  
 
-    <!-- Team Section -->
+    <!-- Team Section 
     <section class="section" id="team">
         <h2 class="section-title">ทีมงานของเรา</h2>
         <div class="team-grid">
@@ -903,7 +1329,9 @@
                         <a href="#"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
-            </div>
+            </div> 
+
+
             <div class="team-card">
                 <div class="team-image">
                     <img src="https://via.placeholder.com/400x400" alt="Team Member">
@@ -919,8 +1347,21 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
+
+    <div class="flex-container">
+        <img src="t5.jpg" alt="ค่าห้องแพง" class="flex-image">
+    </div><br>
+    <div class="flex-container">ตารางเบี้ย BLA Happy Health และ Happy Health พรีเมียร์เพศชาย</div> 
+
+    <br>
+    <div class="flex-container">
+        <img src="t6.jpg" alt="ค่าห้องแพง" class="flex-image">
+    </div><br>
+    <div class="flex-container">ตารางเบี้ย BLA Happy Health และ Happy Health พรีเมียร์เพศหญิง</div> 
+
+    <br>
     <!-- Contact Section -->
     <section class="section contact" id="contact">
         <h2 class="section-title">ติดต่อเรา</h2>
@@ -932,7 +1373,7 @@
                     </div>
                     <div class="contact-text">
                         <h3>ที่อยู่</h3>
-                        <p>123 ถนนตัวอย่าง แขวงบางซื่อ เขตบางซื่อ กรุงเทพฯ 10800</p>
+                        <p>1415 ถ.กรุงเทพ - นนทบุรี   แขวงวงศ์สว่าง บางซื่อ กรุงเทพมหานคร 10800</p>
                     </div>
                 </div>
                 <div class="contact-item">
@@ -941,7 +1382,7 @@
                     </div>
                     <div class="contact-text">
                         <h3>โทรศัพท์</h3>
-                        <p><a href="tel:+6621234567">02-123-4567</a></p>
+                        <p><a href="tel:+6621234567">088-595-4464</a></p>
                     </div>
                 </div>
                 <div class="contact-item">
@@ -950,7 +1391,7 @@
                     </div>
                     <div class="contact-text">
                         <h3>อีเมล</h3>
-                        <p><a href="mailto:info@example.com">info@example.com</a></p>
+                        <p><a href="mailto:info@example.com">kitiya.wealth@gmail.com</a></p>
                     </div>
                 </div>
                 <div class="contact-item">
@@ -959,7 +1400,7 @@
                     </div>
                     <div class="contact-text">
                         <h3>เวลาทำการ</h3>
-                        <p>จันทร์-ศุกร์: 08:30 - 17:30 น.<br>เสาร์-อาทิตย์: ปิดทำการ</p>
+                        <p>จันทร์-อาทิตย์:สามารถติดต่อสอบถาม ปรึกษาฟรี!!</p>
                     </div>
                 </div>
             </div>
@@ -974,7 +1415,7 @@
                         <input type="email" id="email" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="phone">โทรศัพท์</label>
+                        <label for="phone">โทรศัพท์ </label>
                         <input type="tel" id="phone" class="form-control">
                     </div>
                     <div class="form-group">
@@ -988,12 +1429,14 @@
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
     <footer>
-        <div class="footer-logo">
+    <!-- Footer
+    <footer>
+
+     <!--    <div class="footer-logo">
             <img src="https://via.placeholder.com/50" alt="Company Logo">
         </div>
+
         <div class="footer-links">
             <a href="#about">เกี่ยวกับเรา</a>
             <a href="#services">บริการ</a>
@@ -1002,7 +1445,8 @@
             <a href="#">นโยบายความเป็นส่วนตัว</a>
             <a href="#">ข้อกำหนดและเงื่อนไข</a>
         </div>
-        <p class="copyright">© 2023 ชื่อบริษัทของคุณ. สงวนลิขสิทธิ์ทุกประการ.</p>
+         -->
+        <p class="copyright">กิติยา เสาวกุล ตัวแทนประกันชีวิต</p>
     </footer>
 
     <script>
