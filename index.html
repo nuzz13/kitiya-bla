@@ -70,85 +70,129 @@
             margin-top: 20px;
             font-style: italic;
         }
-         /* Menu Bar Styles - จัดกลาง */
-         .menu-container {
-            display: flex;
-            justify-content: center;
-            background-color: var(--primary);
-            padding: 10px 0;
-        }
-        
-        .menu-bar {
-            display: inline-flex;
-            background-color: var(--primary);
-        }
-        
-        .menu-items {
-            display: flex;
-            gap: 25px;
-        }
-        
-        .menu-item {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            position: relative;
-            padding: 10px 0;
-            white-space: nowrap;
-            font-size: 16px;
-        }
-        
-        .menu-item i.fa-check {
-            color: #4caf50;
-        }
-        
-        /* Dropdown Styles */
-        .dropdown {
-            position: relative;
-        }
-        
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: var(--white);
-            min-width: 220px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        
-        .dropdown-content a {
-            color: var(--black);
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            border-bottom: 1px solid #eee;
-            transition: all 0.3s ease;
-        }
-        
-        .dropdown-content a:hover {
-            background-color: #f5f5f5;
-            padding-left: 20px;
-        }
-        
-        .dropdown-content i {
-            color: var(--primary);
-            margin-right: 8px;
-            width: 20px;
-            text-align: center;
-        }
-        
+        /* Menu Bar Styles */
+.menu-container {
+    display: flex;
+    justify-content: center;
+    background-color: var(--primary);
+    padding: 12px 0;
+    width: 100%;
+}
+
+.menu-bar {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px; /* จำกัดความกว้างสูงสุด */
+    padding: 0 20px; /* เพิ่ม padding ข้างๆ */
+}
+
+.menu-items {
+    display: flex;
+    gap: 20px; /* ระยะห่างระหว่างเมนู */
+    align-items: center;
+}
+
+.menu-item {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-icon {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.dropdown:hover .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--white);
+    min-width: 220px;
+    box-shadow: var(--shadow-lg);
+    z-index: 100;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 6px;
+    overflow: hidden;
+    padding: 8px 0;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: var(--black);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    transition: all 0.2s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #f5f5f5;
+    padding-left: 20px;
+}
+
+.dropdown-content i {
+    color: var(--primary);
+    width: 20px;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .menu-items {
+        gap: 12px;
+    }
+    
+    .menu-item {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    
+    .dropdown-content {
+        min-width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-items {
+        gap: 8px;
+    }
+    
+    .menu-item {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+    
+    .dropdown-content {
+        min-width: 180px;
+    }
+}
         /* Right Slide Menu */
         .slide-menu {
             position: fixed;
@@ -770,33 +814,37 @@
     50% { transform: translateY(-10px); }
     100% { transform: translateY(0px); }
 }
-
 .problem-section {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 3rem 1rem;
-    margin: 2rem 0;
-    border-left: 5px solid var(--danger-color);
-    border-right: 5px solid var(--danger-color);
+    background-color: rgba(255, 255, 255, 0.85); /* เพิ่มความโปร่งใส */
+    padding: 3rem 1.5rem;
+    margin: 2rem auto;
+    border-left: 6px solid var(--danger-color);
+    border-right: 6px solid var(--danger-color);
+    border-radius: 10px; /* เพิ่มขอบมนให้ดูสวยขึ้น */
+    box-shadow: var(--shadow-lg);
 }
 
 .container-center {
-    max-width: 1200px;
+    max-width: 1100px; /* ปรับขนาดให้สมดุล */
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 25px;
 }
 
 .problem-title {
     text-align: center;
     color: var(--primary);
-    font-size: 2rem;
+    font-size: 2.2rem; /* ขยายขนาดข้อความ */
+    font-weight: bold;
     margin-bottom: 2rem;
     font-family: 'Kanit', sans-serif;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* เพิ่มมิติ */
 }
 
 .problem-content {
     display: flex;
+    flex-wrap: wrap; /* ปรับให้ยืดหยุ่นกับหน้าจอเล็ก */
     align-items: center;
-    gap: 3rem;
+    gap: 2.5rem;
     max-width: 1000px;
     margin: 0 auto;
 }
@@ -808,12 +856,12 @@
 
 .problem-text h3 {
     color: var(--danger-color);
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
 }
 
 .problem-text p {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     line-height: 1.8;
     font-size: 1.1rem;
 }
@@ -821,22 +869,22 @@
 .highlight-box {
     background-color: var(--danger-color);
     color: white;
-    padding: 1.5rem;
-    border-radius: 10px;
+    padding: 1.8rem;
+    border-radius: 12px;
     margin: 2rem auto;
     text-align: center;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: bold;
-    max-width: 80%;
-    box-shadow: 0 4px 8px rgba(248, 113, 113, 0.3);
+    max-width: 85%;
+    box-shadow: 0 6px 12px rgba(248, 113, 113, 0.4); /* เพิ่มเงาให้ดูนุ่มขึ้น */
 }
 
 .problem-image {
     flex: 1;
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
     box-shadow: var(--shadow-lg);
-    max-width: 500px;
+    max-width: 450px;
     margin: 0 auto;
 }
 
@@ -844,39 +892,33 @@
     width: 100%;
     height: auto;
     display: block;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .problem-image:hover img {
-    transform: scale(1.05);
+    transform: scale(1.07);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* เพิ่มเอฟเฟกต์เมื่อ hover */
 }
 
-/* Responsive Design */
+/* ปรับให้ responsive */
 @media (max-width: 768px) {
     .problem-content {
         flex-direction: column;
+        gap: 1.5rem;
     }
-    
+
     .problem-title {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
     }
-    
-    .problem-text h3 {
-        font-size: 1.3rem;
-    }
-    
+
     .highlight-box {
-        font-size: 1.1rem;
-        padding: 1rem;
-        max-width: 100%;
+        max-width: 90%;
+        font-size: 1.2rem;
     }
-    
-    .problem-image {
-    margin-top: 2rem;
-    text-align: center;
 }
 
-}
+
+
 .flex-container {
     display: flex;
     justify-content: center; /* จัดกลางแนวนอน */
@@ -915,204 +957,169 @@
     </style>
 </head>
 <body>
-  <!-- Menu Bar Container -->
-  <div class="menu-container">
+ <!-- Menu Bar Container -->
+ <div class="menu-container">
     <div class="menu-bar">
-        <div class="menu-items">
-            <div class="dropdown">
-                <a href="#" class="menu-item">ผลิตภัณฑ์ <i class="fas fa-chevron-down" style="font-size: 12px;"></i></a>
-                <div class="dropdown-content">
-                    <a href="#" id="life-insurance-link"><i class="fas fa-shield-alt"></i> ประกันชีวิต/Life Insurance</a>
-                    <a href="#"><i class="fas fa-heartbeat"></i> ประกันสุขภาพ/Health Insurance</a>
-                </div>
-            </div>
-            <a href="#" class="menu-item">บริการ <i class="fas fa-check"></i></a>
-            <a href="#" class="menu-item">บทความ <i class="fas fa-check"></i></a>
-            <a href="#" class="menu-item">ร่วมงานกับเรา</a>
-            <a href="#" class="menu-item">เกี่ยวกับเรา</a>
+      <div class="menu-items">
+        <div class="dropdown">
+          <a href="#" class="menu-item">ผลิตภัณฑ์ <i class="fas fa-chevron-down" style="font-size: 12px;"></i></a>
+          <div class="dropdown-content">
+            <a href="#" id="life-insurance-link"><i class="fas fa-shield-alt"></i> ประกันชีวิต/Life Insurance</a>
+            <a href="#"><i class="fas fa-heartbeat"></i> ประกันสุขภาพ/Health Insurance</a>
+          </div>
         </div>
+        <a href="#" class="menu-item">บริการ <i class="fas fa-check"></i></a>
+        <!-- <a href="#" class="menu-item">บทความ <i class="fas fa-check"></i></a>
+        <a href="#" class="menu-item">ร่วมงานกับเรา</a>
+        <a href="#" class="menu-item">เกี่ยวกับเรา</a> -->
+      </div>
     </div>
-</div>
+  </div>
 
-<!-- Right Slide Menu -->
-<div class="overlay" id="overlay"></div>
-<div class="slide-menu" id="slideMenu">
+  <!-- Right Slide Menu -->
+  <div class="overlay" id="overlay"></div>
+  <div class="slide-menu" id="slideMenu">
     <div class="slide-menu-header">
-        <h3>ประกันชีวิต/Life Insurance</h3>
-        <button class="close-btn" id="closeBtn"><i class="fas fa-times"></i></button>
+      <h3>ประกันชีวิต/Life Insurance</h3>
+      <button class="close-btn" id="closeBtn"><i class="fas fa-times"></i></button>
     </div>
     <div class="slide-menu-content">
-        <a href="#" class="slide-menu-link">แผนประกันชีวิตพื้นฐาน</a>
-        <a href="#" class="slide-menu-link">แผนประกันชีวิตแบบสะสมทรัพย์</a>
-        <a href="#" class="slide-menu-link">แผนประกันชีวิตแบบตลอดชีพ</a>
-        <a href="#" class="slide-menu-link">แผนประกันชีวิตแบบชำระเบี้ยจำกัด</a>
-        <a href="#" class="slide-menu-link">แผนประกันชีวิตแบบบำนาญ</a>
-        <a href="#" class="slide-menu-link">แผนประกันชีวิตแบบคุ้มครองโรคร้ายแรง</a>
+      <a href="#" class="slide-menu-link">แผนประกันชีวิตพื้นฐาน</a>
+      <a href="#" class="slide-menu-link">แผนประกันชีวิตแบบสะสมทรัพย์</a>
+      <a href="#" class="slide-menu-link">แผนประกันชีวิตแบบตลอดชีพ</a>
+      <a href="#" class="slide-menu-link">แผนประกันชีวิตแบบชำระเบี้ยจำกัด</a>
+      <a href="#" class="slide-menu-link">แผนประกันชีวิตแบบบำนาญ</a>
+      <a href="#" class="slide-menu-link">แผนประกันชีวิตแบบคุ้มครองโรคร้ายแรง</a>
     </div>
-</div>
+  </div>
 
-<script>
+  <script>
     document.getElementById('life-insurance-link').addEventListener('click', function(e) {
-        e.preventDefault();
-        document.getElementById('slideMenu').classList.add('active');
-        document.getElementById('overlay').classList.add('active');
+      e.preventDefault();
+      document.getElementById('slideMenu').classList.add('active');
+      document.getElementById('overlay').classList.add('active');
     });
-    
+
     document.getElementById('closeBtn').addEventListener('click', function() {
-        document.getElementById('slideMenu').classList.remove('active');
-        document.getElementById('overlay').classList.remove('active');
+      document.getElementById('slideMenu').classList.remove('active');
+      document.getElementById('overlay').classList.remove('active');
     });
-    
+
     document.getElementById('overlay').addEventListener('click', function() {
-        document.getElementById('slideMenu').classList.remove('active');
-        this.classList.remove('active');
+      document.getElementById('slideMenu').classList.remove('active');
+      this.classList.remove('active');
     });
-</script>
-    
- 
- 
+  </script>
 
-<!-- Hero Section -->
-<section class="hero">
+  <!-- Hero Section -->
+  <section class="hero">
     <div class="hero-content">
-        <div class="logo">
-            <img src="pf.png" alt="Company Logo">
-        </div>
-        By Kitiya Saowakul BLA Wealth financial advisor ตัวแทนประกันชีวิต
-        <h1>กรุงเทพประกันชีวิต BLA Happy Health Premier – ประกัน</h1>
-        <p class="tagline">สุขภาพเหมาจ่าย by กิติยา เสาวกุล ตัวแทนคุณภาพ </p>
-        <div>
-            <a href="#contact" class="cta-button">
-                <i class="fas fa-envelope"></i> ติดต่อเรา
-            </a>
-            <a href="#services" class="cta-button" style="background: transparent; color: var(--white); border: 2px solid var(--white);">
-                <i class="fas fa-list"></i> บริการของเรา
-            </a>
-        </div>
+      <div class="logo">
+        <img src="pf.png" alt="Company Logo">
+      </div>
+      By Kitiya Saowakul BLA Wealth financial advisor ตัวแทนประกันชีวิต
+      <h1>กรุงเทพประกันชีวิต BLA Happy Health Premier – ประกัน</h1>
+      <p class="tagline">สุขภาพเหมาจ่าย by กิติยา เสาวกุล ตัวแทนคุณภาพ </p>
+      <div>
+        <a href="#contact" class="cta-button">
+          <i class="fas fa-envelope"></i> ติดต่อเรา
+        </a>
+        <a href="#services" class="cta-button" style="background: transparent; color: var(--white); border: 2px solid var(--white);">
+          <i class="fas fa-list"></i> บริการของเรา
+        </a>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- About Section -->
-<section class="section" id="about">
+  <!-- About Section -->
+  <section class="section" id="about">
     <h2 class="section-title">ตัวอย่างแผน</h2>
-    
- 
-    
 
-    <!-- รูปภาพแผนประกัน -->
     <div class="plan-image">
-        <img src="plan.jpg" alt="ตารางผลประโยชน์ประกันสุขภาพ">
+      <img src="plan.jpg" alt="ตารางผลประโยชน์ประกันสุขภาพ">
     </div>
     <p class="plan-caption">ตารางผลประโยชน์ประกันสุขภาพเหมาจ่าย BLA Happy Health Premier</p>
 
-    <!-- รูปภาพตาราง 1 -->
     <div class="plan-image">
-        <img src="t1.jpg" alt="ตารางผลประโยชน์ประกันสุขภาพ">
+      <img src="t1.jpg" alt="ตารางผลประโยชน์ประกันสุขภาพ">
     </div>
     <p class="plan-caption">ตารางผลประโยชน์ประกันสุขภาพเหมาจ่าย BLA Happy Health Premier</p>
 
-    <!-- รูปภาพตาราง 2 -->
     <div class="plan-image">
-        <img src="t2.jpg" alt="สรุปแผนประกัน">
+      <img src="t2.jpg" alt="สรุปแผนประกัน">
     </div>
-    
     <p class="plan-caption">สรุปแผน BLA Happy Health Premier กรุงเทพประกันชีวิต – โดย Kitiya - BLA</p>
-</section>
-<div class="intro-text">
+  </section>
+
+  <div class="intro-text">
     <div class="speech-bubble">
-        <h3>คุณเคยไหม...ซื้อประกันหลายเล่มเพื่อเอาจุดแข็งเล่ม A มาเปิด<br>
-        จุดอ่อนเล่ม B ... สุดท้ายจ่ายแพงมาก!</h3>
-        <p class="highlight">จะดีไหมถ้ามีประกันสุขภาพที่ครบ จบในเล่มเดียว<br>
-        ไปจนอายุ 99 ปีเลย!</p>
+      <h3>คุณเคยไหม...ซื้อประกันหลายเล่มเพื่อเอาจุดแข็งเล่ม A มาเปิด<br> จุดอ่อนเล่ม B ... สุดท้ายจ่ายแพงมาก!</h3>
+      <p class="highlight">จะดีไหมถ้ามีประกันสุขภาพที่ครบ จบในเล่มเดียว<br> ไปจนอายุ 99 ปีเลย!</p>
     </div>
-</div>
+  </div>
 
-<!-- ส่วนปัญหาประกันสุขภาพแบบเดิม -->
-<div class="problem-section">
+  <!-- ส่วนปัญหาประกันสุขภาพแบบเดิม -->
+  <div class="problem-section">
     <div class="container-center">
-        <h2 class="problem-title">1. ทำไมต้องประกันสุขภาพจากกรุงเทพประกันชีวิต?</h2>
-        
-        <div class="problem-text">
-            <h3>ปัญหาที่พบในประกันสุขภาพแบบเดิม</h3>
-            <p>ด้วยความที่แผนประกันเก่าๆ ให้ <strong>'ค่าห้อง' น้อยมาก</strong> และปัจจุบันค่าห้องรพ.ก็แพงขึ้นมาก ทำให้ต้องจ่าย</p>
-            
-            <div class="highlight-box-yellow">
-                <p>"ส่วนต่างค่าห้องแพงมาก!"</p>
-            </div>
-            
-            <p>เคยเจอเคสคนที่ถือแผนประกันสุขภาพเก่าต้องจ่ายส่วนต่างหลายพันจนถึงหมื่นกว่าบาท (ถ้านอนหลายวัน)</p>
+      <h2 class="problem-title">1. ทำไมต้องประกันสุขภาพจากกรุงเทพประกันชีวิต?</h2>
+      <div class="problem-text">
+        <h3>ปัญหาที่พบในประกันสุขภาพแบบเดิม</h3>
+        <p>ด้วยความที่แผนประกันเก่าๆ ให้ <strong>'ค่าห้อง' น้อยมาก</strong> และปัจจุบันค่าห้องรพ.ก็แพงขึ้นมาก ทำให้ต้องจ่าย</p>
+        <div class="highlight-box-yellow">
+          <p>"ส่วนต่างค่าห้องแพงมาก!"</p>
         </div>
-        
-        <div class="flex-container">
-            <img src="t3.jpg" alt="ค่าห้องแพง" class="flex-image">
-            
-        </div><br>
-        <div class="flex-container">ค่าห้องเดี่ยวมาตรฐานของแต่ละโรงพยาบาล อ้างอิง: บมจ.กรุงเทพประกันชีวิต 2024 </div>
+        <p>เคยเจอเคสคนที่ถือแผนประกันสุขภาพเก่าต้องจ่ายส่วนต่างหลายพันจนถึงหมื่นกว่าบาท (ถ้านอนหลายวัน)</p>
+      </div>
+
+      <div class="flex-container">
+        <img src="t3.jpg" alt="ค่าห้องแพง" class="flex-image">
+      </div><br>
+      <div class="flex-container">ค่าห้องเดี่ยวมาตรฐานของแต่ละโรงพยาบาล อ้างอิง: บมจ.กรุงเทพประกันชีวิต 2024 </div>
     </div>
-</div>
- 
+  </div>
 
-<div class="recommendation-section">
-    <p>BLA หรือกรุงเทพประกันชีวิตก็เลย ปิ๊งงงงงง ไอเดีย ออกสินค้านี้มาครองใจคนไทยทั้งประเทศ! กับ BLA Happy Health Premier (HHP) – ขออนุญาตใช้ตัวย่อเพื่อความเข้าใจง่ายในการอ่านนะค่ะ</p>
-    
+  <div class="recommendation-section">
+    <p>BLA หรือกรุงเทพประกันชีวิตก็เลย ปิ๊งงงงงง ไอเดีย ออกสินค้านี้มาครองใจคนไทยทั้งประเทศ! กับ BLA Happy Health Premier (HHP)</p>
     <p>หากถามว่า BLA Happy Health ดีไหม ให้ลอง search คำว่า BLA Happy Health Pantip ดูหรือแม้แต่เพจแม่มณีเอง ก็มีรีวิวสินค้านี้แล้วเช่นกันค่ะ</p>
-    
-    <p>หรือในฐานะที่เคยเป็น user เคลมประกันสุขภาพของบริษัทนี้ไปแล้ว 2-3 ครั้ง ก็แฮปปี้มากๆค่ะ เคลมสะดวก ไม่จุกจิก (หากเราไม่ได้ปกปิดโรคประจำตัวกับทางตัวแทน/บริษัทประกันก่อนทำประกันนะค่ะ)</p>
-</div>
+    <p>หรือในฐานะที่เคยเป็น user เคลมประกันสุขภาพของบริษัทนี้ไปแล้ว 2-3 ครั้ง ก็แฮปปี้มากๆค่ะ เคลมสะดวก ไม่จุกจิก</p>
+  </div>
 
-
-
-
-
-
-
-
-<!-- Awards -->
-<div class="problem-section">
+  <!-- Awards -->
+  <div class="problem-section">
     <div class="container-center">
-        <h2 class="problem-title">2. รางวัลและการการันตีคุณภาพ (Awards)</h2>
-        
-        <div class="recommendation-section">
-            <h3></h3>
-            <p>บมจ.กรุงเทพประกันชีวิต ได้รับรางวัล<strong>“บริษัทที่ให้ความคุ้มครองประกันสุขภาพดีที่สุดแห่งปี”</strong>จากงาน Emerging Asia Insurance Awards 2019 และรางวัล <strong>“บริษัทประกันสุขภาพที่มีนวัตกรรมยอดเยี่ยม”</strong>2 ปีซ้อนจากงาน International Finance Awards 2021<strong> การันตีคุณภาพระดับโลก</strong></p>
-            
-         </div>
-        
-         <div class="flex-container">
-            <img src="aw.jpg" alt="ค่าห้องแพง" class="flex-image">
-        </div><br>
-        <div class="flex-container">อ้างอิงสถิติจาก <a href="https://www.bangkoklife.com/th/news/detail/320" target="_blank">
-               www.bangkoklife.com/th/news/detail/320 
-        </a></div>  
+      <h2 class="problem-title">2. รางวัลและการการันตีคุณภาพ (Awards)</h2>
+      <div class="recommendation-section">
+        <p>บมจ.กรุงเทพประกันชีวิต ได้รับรางวัล <strong>“บริษัทที่ให้ความคุ้มครองประกันสุขภาพดีที่สุดแห่งปี”</strong> จากงาน Emerging Asia Insurance Awards 2019</p>
+        <p>และรางวัล <strong>“บริษัทประกันสุขภาพที่มีนวัตกรรมยอดเยี่ยม”</strong> 2 ปีซ้อนจากงาน International Finance Awards 2021 <strong>การันตีคุณภาพระดับโลก</strong></p>
+      </div>
+      <div class="flex-container">
+        <img src="aw.jpg" alt="ค่าห้องแพง" class="flex-image">
+      </div><br>
+      <div class="flex-container">อ้างอิงสถิติจาก <a href="https://www.bangkoklife.com/th/news/detail/320" target="_blank">www.bangkoklife.com/th/news/detail/320</a></div>
+    </div>
+  </div>
 
-
-
-
-
-<!-- ตารางผลประโยชน์ -->
-<div class="problem-section">
+  <!-- ตารางผลประโยชน์ -->
+  <div class="problem-section">
     <div class="container-center">
-        <h2 class="problem-title">3. ตารางผลประโยชน์ BLA Happy Health Premier (Copay)</h2>
-        
-      
-        
-         <div class="flex-container">
-            <img src="t4.jpg" alt="ค่าห้องแพง" class="flex-image">
-        </div><br>
-        <div class="flex-container">ตารางผลประโยชน์ประกันสุขภาพเหมาจ่าย BLA Happy Health Premier</div>  
-        <div class="recommendation-section">
-            <h3></h3>
-            <p><strong>***1 หากซื้อแผน ‘deduct หรือ มีส่วนรับผิด’ สามารถใช้สิทธิ์ในหมวดที่ 6-13 โดยไม่ต้องจ่าย deduct ก่อนได้
-
-                <br><br>***2 หมวด 1: ค่าห้องระบุว่า 3,000 ต่อวันหรือเหมาจ่ายค่าห้องเดี่ยวเริ่มต้นของรพ. = หมายความว่า อันไหนมากกว่าจ่ายอันนั้น เช่น ค่าห้อง/อาหาร/บริการรพ.ของรพ.กรุงเทพ = 11,000 ฿ ก็จะจ่ายให้ 11,000 ฿ เต็ม ไม่ใช่จ่ายให้แค่ 3,000 ฿
-                
-                <br><br>*** หมวด7/8 เวลาได้ใบเสนอราคา คำว่าไม่คุ้มครอง ไม่ใช่ว่า ‘ไม่จ่าย’ แต่ในแผนนี้ไม่มีคุ้มครองในส่วนนี้</strong> </p>
-            
-         </div>
+      <h2 class="problem-title">3. ตารางผลประโยชน์ BLA Happy Health Premier (Copay)</h2>
+      <div class="flex-container">
+        <img src="t4.jpg" alt="ค่าห้องแพง" class="flex-image">
+      </div><br>
+      <div class="flex-container">ตารางผลประโยชน์ประกันสุขภาพเหมาจ่าย BLA Happy Health Premier</div>
+      <div class="recommendation-section">
+        <p>
+          <strong>***1หากซื้อแผน ‘deduct หรือ มีส่วนรับผิด’ สามารถใช้สิทธิ์ในหมวดที่ 6-13 โดยไม่ต้องจ่าย deduct ก่อนได้</strong> <br><br>
+          <strong>***2 หมวด 1: ค่าห้องระบุว่า 3,000 ต่อวันหรือเหมาจ่ายค่าห้องเดี่ยวเริ่มต้นของรพ. = หมายความว่า อันไหนมากกว่าจ่ายอันนั้น เช่น ค่าห้อง/อาหาร/บริการรพ.ของรพ.กรุงเทพ = 11,000 ฿ ก็จะจ่ายให้ 11,000 ฿ เต็ม ไม่ใช่จ่ายให้แค่ 3,000 ฿</strong><br><br>
+          <strong>***หมวด 7/8 เวลาได้ใบเสนอราคา คำว่าไม่คุ้มครอง ไม่ใช่ว่า ‘ไม่จ่าย’ แต่ในแผนนี้ไม่มีคุ้มครองในส่วนนี้</strong> 
+        </p>
+      </div>
+    </div>
+  </div>
 
 
          <!-- จึดเด่นทั้ง HH และ HHP -->
-<div class="problem-section">
+ <div class="problem-section">
     <div class="container-center">
         <h2 class="problem-title">4. จุดเด่น ของทั้ง HH และ HHP</h2>
         
@@ -1120,7 +1127,8 @@
         
         
       
-        <div class="recommendation-section">
+        <div class="problem-section">
+            <div class="container-center">
              
             <p><strong>4.1 จ่ายค่าห้องตามจริง ตามอัตราห้องเดี่ยวเริ่มต้นของรพ.</strong><div class="recommendation-section"><p>ดังนั้นไม่ว่าค่าใช้จ่ายในรพ.(ทั้งค่าห้องและค่ารักษา ฯลฯ) จะเฟ้อแค่ไหน (ตามเอกสารอ้างอิงคือ ประมาณ 9% ต่อปี) เราก็จ่ายให้คุณ! 
                 แม้ว่าในหมวด 1 ของค่าห้อง HHP จะเขียนว่า 5,000 บาทหรือจ่ายตามอัตราห้องเดี่ยวเริ่มต้น คนร้อยละ 90% มักอ่านผ่านๆแล้วเข้าใจผิดว่า fix ค่าห้อง แต่เปล่าเลยครับ <br><strong><u>ตัวไหนมากกว่าจ่ายตัวนั้น!</u></strong></p>
@@ -1157,8 +1165,11 @@
                  <p class="emphasis">*****แม้สินค้าประกันสุขภาพจะเปิดตัวในช่วงโควิด19 ที่มีอัตราการเคลมประกันสูงมาก อย่างไรก็ตาม "ทุกสินค้า" ของ BLA ยังไม่เคยมีการปรับเบี้ยใดๆจากตารางเบี้ยที่ออกมา ณ ตอนเปิดตัวสินค้าเลย ไม่ว่าจะเป็นสินค้า BLA Happy Health หรือ BLA Prestige Health เองก็ตาม</p>
                  
                  <p class="note">จึงทำให้มั่นใจในบริษัทนี้มากๆ อย่างไรก็ตามไม่ได้หมายความว่าในอนาคตตารางเบี้ยจะไม่เปลี่ยนแปลง*</p>
+
+
+        
     
-    <div class="important-note">
+         <div class="important-note">
         <h4><i class="fas fa-exclamation-circle"></i> ข้อควรทราบเกี่ยวกับการปรับเบี้ย</h4>
         <p>แม้ว่า HHP จะเป็นประกันสุขภาพเหมาจ่ายที่ปรับเบี้ยทุกๆ 5 ปีแล้ว อีกปัจจัยนึงที่สามารถส่งผลต่อการเพิ่มเบี้ยได้นั้น คือ <strong>"อัตราการเคลมของทุกคนที่ซื้อแผนประกันนั้นๆ/พอร์ตโฟลิโอ (portfolio)"</strong></p>
         
@@ -1168,11 +1179,12 @@
             <li>ต้องขออนุญาตคปภ.ก่อน</li>
             <li>ต้องแจ้งลูกค้าล่วงหน้าเป็นลายลักษณ์อักษรไม่น้อยกว่า 30 วัน ก่อนดำเนินการปรับเบี้ย</li>
         </div>
-    </div>
+       </div>
     
-    <div class="standard-info">
+       <div class="standard-info">
         <p>เงื่อนไขนี้เป็นเงื่อนไขใหม่ของประกันสุขภาพแบบ New Standard Health ไม่ว่าบริษัทไหน ก็จะใช้เกณฑ์เดียวกันทั้งหมด โดยเฉพาะทุกๆ สินค้าที่เปิดขายใหม่ตั้งแต่ประมาณปี 2019 นั้นล้วนใช้เงื่อนไข New Standard Health ทั้งสิ้น</p>
-    </div>
+        </div>
+  </div> 
      
 
 
@@ -1211,11 +1223,6 @@
     
 
 
-
-
-
-
-
 <div class="container-center">
     <h2 class="problem-title">6. ตารางเบี้ย HHP</h2>
     <p><strong</strong>
@@ -1232,94 +1239,6 @@
 </div>
 
  
-
-  
-       
-    <!-- Services Section 
-    <section class="section services" id="services">
-        <h2 class="section-title">บริการของเรา</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-laptop-code"></i>
-                </div>
-                <h3>บริการที่ 1</h3>
-                <p>คำอธิบายสั้นๆ เกี่ยวกับบริการนี้ และสิ่งที่ทำให้บริการนี้พิเศษกว่าที่อื่น</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-                <h3>บริการที่ 2</h3>
-                <p>คำอธิบายสั้นๆ เกี่ยวกับบริการนี้ และสิ่งที่ทำให้บริการนี้พิเศษกว่าที่อื่น</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-users"></i>
-                </div>
-                <h3>บริการที่ 3</h3>
-                <p>คำอธิบายสั้นๆ เกี่ยวกับบริการนี้ และสิ่งที่ทำให้บริการนี้พิเศษกว่าที่อื่น</p>
-            </div>
-        </div>
-    </section>
-    -->
-
-
-
- 
-
-    <!-- Team Section 
-    <section class="section" id="team">
-        <h2 class="section-title">ทีมงานของเรา</h2>
-        <div class="team-grid">
-            <div class="team-card">
-                <div class="team-image">
-                    <img src="https://via.placeholder.com/400x400" alt="Team Member">
-                </div>
-                <div class="team-info">
-                    <h3>ชื่อสมาชิกทีม</h3>
-                    <p>ตำแหน่งงาน</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="team-card">
-                <div class="team-image">
-                    <img src="https://via.placeholder.com/400x400" alt="Team Member">
-                </div>
-                <div class="team-info">
-                    <h3>ชื่อสมาชิกทีม</h3>
-                    <p>ตำแหน่งงาน</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-            </div> 
-
-
-            <div class="team-card">
-                <div class="team-image">
-                    <img src="https://via.placeholder.com/400x400" alt="Team Member">
-                </div>
-                <div class="team-info">
-                    <h3>ชื่อสมาชิกทีม</h3>
-                    <p>ตำแหน่งงาน</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-
     <div class="flex-container">
         <img src="t5.jpg" alt="ค่าห้องแพง" class="flex-image">
     </div><br>
