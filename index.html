@@ -70,129 +70,227 @@
             margin-top: 20px;
             font-style: italic;
         }
-        /* Menu Bar Styles */
-.menu-container {
-    display: flex;
-    justify-content: center;
+       /* Menu Container */
+  .menu-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     background-color: var(--primary);
-    padding: 12px 0;
-    width: 100%;
-}
+    box-shadow: 0 2px 10px rgba(240, 235, 235, 0.1);
+    z-index: 1000;
+  }
 
-.menu-bar {
+  .menu-bar {
     display: flex;
-    justify-content: center;
-    width: 100%;
-    max-width: 1200px; /* จำกัดความกว้างสูงสุด */
-    padding: 0 20px; /* เพิ่ม padding ข้างๆ */
-}
-
-.menu-items {
-    display: flex;
-    gap: 20px; /* ระยะห่างระหว่างเมนู */
+    justify-content: space-between;
     align-items: center;
-}
+    padding: 0 20px;
+    height: 60px;
+  }
 
-.menu-item {
-    color: var(--white);
+  /* Desktop Menu Items */
+  .menu-items {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .menu-item {
+    color: #c6c3ee;
     text-decoration: none;
     font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 16px;
+    padding: 8px 12px;
     border-radius: 4px;
     transition: all 0.3s ease;
-    white-space: nowrap;
-}
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
 
-.menu-item:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
+  .menu-item:hover {
+    background-color: #77c4d1;
+  }
 
-.dropdown {
+  /* Dropdown Menu */
+  .dropdown {
     position: relative;
-}
+  }
 
-.dropdown-icon {
+  .dropdown-icon {
     font-size: 12px;
     transition: transform 0.3s ease;
-}
+  }
 
-.dropdown:hover .dropdown-icon {
+  .dropdown:hover .dropdown-icon {
     transform: rotate(180deg);
-}
+  }
 
-.dropdown-content {
+  .dropdown-content {
     display: none;
     position: absolute;
-    background-color: var(--white);
-    min-width: 220px;
-    box-shadow: var(--shadow-lg);
+    background-color: white;
+    min-width: 240px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     z-index: 100;
     top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     border-radius: 6px;
     overflow: hidden;
-    padding: 8px 0;
-}
+  }
 
-.dropdown:hover .dropdown-content {
+  .dropdown:hover .dropdown-content {
     display: block;
-}
+  }
 
-.dropdown-content a {
-    color: var(--black);
-    text-decoration: none;
+  .dropdown-item {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 10px 16px;
+    padding: 12px 16px;
+    color: #333;
+    text-decoration: none;
     transition: all 0.2s ease;
-}
+    white-space: nowrap;
+  }
 
-.dropdown-content a:hover {
+  .dropdown-item:hover {
     background-color: #f5f5f5;
-    padding-left: 20px;
-}
+  }
 
-.dropdown-content i {
-    color: var(--primary);
-    width: 20px;
-    text-align: center;
-}
+  /* Hamburger Menu */
+  .hamburger {
+    display: none;
+    cursor: pointer;
+    padding: 10px;
+  }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .menu-items {
-        gap: 12px;
+  .hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+  }
+
+  /* Slide Menu */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .slide-menu {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 280px;
+    height: 100%;
+    background-color: white;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+  }
+
+  .slide-menu.active {
+    right: 0;
+  }
+
+  .slide-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    background-color: #f8f9fa;
+  }
+
+  .slide-menu-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #2c3e50;
+  }
+
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #666;
+  }
+
+  .slide-menu-content {
+    padding: 15px;
+    overflow-y: auto;
+    height: calc(100% - 60px);
+  }
+
+  .slide-menu-link {
+    display: block;
+    padding: 12px 0;
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid #f5f5f5;
+    transition: all 0.2s ease;
+  }
+
+  .slide-menu-link:hover {
+    color: #3498db;
+    padding-left: 10px;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hamburger {
+      display: block;
     }
     
-    .menu-item {
-        padding: 8px 12px;
-        font-size: 14px;
+    .menu-items {
+      display: none;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      flex-direction: column;
+      padding: 15px;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+      z-index: 999;
+    }
+    
+    .menu-items.active {
+      display: flex;
     }
     
     .dropdown-content {
-        min-width: 200px;
-    }
-}
-
-@media (max-width: 480px) {
-    .menu-items {
-        gap: 8px;
+      position: static;
+      box-shadow: none;
+      display: none;
+      width: 100%;
+      border-radius: 0;
     }
     
-    .menu-item {
-        padding: 6px 10px;
-        font-size: 13px;
+    .dropdown.active .dropdown-content {
+      display: block;
     }
     
-    .dropdown-content {
-        min-width: 180px;
+    .dropdown-icon {
+      margin-left: auto;
     }
-}
+  }
         /* Right Slide Menu */
         .slide-menu {
             position: fixed;
@@ -824,46 +922,101 @@
     box-shadow: var(--shadow-lg);
 }
 
+/* ปรับส่วน container-center ให้กว้างขึ้น */
 .container-center {
-    max-width: 1100px; /* ปรับขนาดให้สมดุล */
+    max-width: 1100px; /* เพิ่มจากเดิม 1000px */
     margin: 0 auto;
-    padding: 0 25px;
+    padding: 0 30px; /* เพิ่ม padding ข้างใน */
 }
 
-.problem-title {
-    text-align: center;
-    color: var(--primary);
-    font-size: 2.2rem; /* ขยายขนาดข้อความ */
-    font-weight: bold;
-    margin-bottom: 2rem;
-    font-family: 'Kanit', sans-serif;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* เพิ่มมิติ */
-}
-
-.problem-content {
-    display: flex;
-    flex-wrap: wrap; /* ปรับให้ยืดหยุ่นกับหน้าจอเล็ก */
-    align-items: center;
-    gap: 2.5rem;
-    max-width: 1000px;
+/* ปรับ recommendation-section ให้กว้างขึ้น */
+.recommendation-section {
+    max-width: 900px; /* เพิ่มจากเดิม 800px */
     margin: 0 auto;
-}
-
-.problem-text {
-    flex: 1;
-    text-align: center;
-}
-
-.problem-text h3 {
-    color: var(--danger-color);
-    font-size: 1.6rem;
-    margin-bottom: 1rem;
-}
-
-.problem-text p {
-    margin-bottom: 1rem;
+    padding: 25px;
     line-height: 1.8;
     font-size: 1.1rem;
+}
+
+/* ปรับ problem-section ให้กว้างขึ้น */
+.problem-section {
+    max-width: 1100px; /* เพิ่มความกว้างสูงสุด */
+    margin: 2rem auto;
+    padding: 2.5rem;
+    border-radius: 12px;
+}
+
+/* ปรับขนาดฟอนต์และระยะห่าง */
+.problem-text p, .recommendation-section p {
+    font-size: 1.15rem; /* ขยายขนาดฟอนต์เล็กน้อย */
+    line-height: 1.9; /* เพิ่มระยะห่างระหว่างบรรทัด */
+    margin-bottom: 1.5rem; /* เพิ่มระยะห่างระหว่างย่อหน้า */
+}
+
+/* ปรับหัวข้อให้โดดเด่น */
+.problem-title {
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
+}
+
+/* ปรับรายการ bullet points */
+.recommendation-section ul {
+    padding-left: 25px;
+    margin-bottom: 1.5rem;
+}
+
+.recommendation-section li {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+/* ปรับ highlight-box */
+.highlight-box {
+    max-width: 90%;
+    padding: 1.5rem;
+    font-size: 1.3rem;
+    margin: 2.5rem auto;
+}
+
+/* ปรับ responsive design */
+@media (max-width: 768px) {
+    .container-center {
+        padding: 0 20px;
+    }
+    
+    .problem-section {
+        padding: 1.5rem;
+    }
+    
+    .problem-title {
+        font-size: 1.8rem;
+    }
+    
+    .recommendation-section {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container-center {
+        padding: 0 15px;
+    }
+    
+    .problem-section {
+        padding: 1.2rem;
+    }
+    
+    .problem-title {
+        font-size: 1.6rem;
+    }
+    
+    .recommendation-section {
+        padding: 15px;
+    }
+    
+    .problem-text p, .recommendation-section p {
+        font-size: 1.05rem;
+    }
 }
 
 .highlight-box {
@@ -952,31 +1105,217 @@
     color: #4f46e5;
     transition: color 0.3s ease;
 }
+.image-display-section { width: 100%; margin: 25px 0; } .high-res-container { max-width: 100%; overflow-x: auto; text-align: center; border: 1px solid #ffffff; padding: 15px; background-color: #ffffff; border-radius: 5px; } .high-res-image { width: auto; height: auto; max-width: 100%; max-height: 800px; /* จำกัดความสูงสูงสุด */ object-fit: contain; box-shadow: 0 2px 5px rgba(0,0,0,0.1); } .image-caption { margin-top: 15px; font-size: 16px; color: #555; font-weight: 500; } /* สำหรับการแสดงผลบนมือถือ */ @media (max-width: 768px) { .high-res-container { padding: 10px; } .high-res-image { max-height: 500px; } .image-caption { font-size: 14px; } }
+
+
+
+/* Contact Section Styles */
+.section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 15px; /* Added rounded corners */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #2c3e50;
+    font-size: 2rem;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-item {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.contact-icon {
+    background-color: #f8f9fa;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3498db;
+    font-size: 1rem;
+}
+
+.contact-text h3 {
+    margin: 0 0 5px 0;
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+
+.contact-text p, .contact-text a {
+    margin: 0;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.contact-text a:hover {
+    color: #3498db;
+}
+
+/* Form Styles */
+.contact-form {
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 12px; /* More rounded corners for form */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Rounded corners for inputs */
+    font-size: 1rem;
+}
+
+textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.submit-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px; /* Rounded corners for button */
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.submit-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #ffffff;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    border-radius: 0 0 15px 15px; /* Rounded bottom corners only */
+}
+
+.copyright {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .contact-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .contact-form {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section {
+        padding: 30px 15px;
+    }
+    
+    .form-control {
+        padding: 10px;
+    }
+    
+    .submit-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+footer {
+    background-color: #0077ff; /* Bright blue background */
+    color: #ffffff; /* White text for contrast */
+    padding: 15px;
+    text-align: center;
+}
+
+.copyright {
+    font-size: 16px;
+    font-weight: bold;
+}
+
 
 
     </style>
+
 </head>
 <body>
- <!-- Menu Bar Container -->
- <div class="menu-container">
+<!-- Menu Bar Container -->
+<div class="menu-container">
     <div class="menu-bar">
-      <div class="menu-items">
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="menu-items" id="menuItems">
         <div class="dropdown">
-          <a href="#" class="menu-item">ผลิตภัณฑ์ <i class="fas fa-chevron-down" style="font-size: 12px;"></i></a>
+          <a href="#" class="menu-item">ผลิตภัณฑ์ <i class="fas fa-chevron-down dropdown-icon"></i></a>
           <div class="dropdown-content">
-            <a href="#" id="life-insurance-link"><i class="fas fa-shield-alt"></i> ประกันชีวิต/Life Insurance</a>
-            <a href="#"><i class="fas fa-heartbeat"></i> ประกันสุขภาพ/Health Insurance</a>
+            <a href="#" id="life-insurance-link" class="dropdown-item">
+              <i class="fas fa-shield-alt"></i>
+              <span>ประกันชีวิต/Life Insurance</span>
+            </a>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-heartbeat"></i>
+              <span>ประกันสุขภาพ/Health Insurance</span>
+            </a>
           </div>
         </div>
         <a href="#" class="menu-item">บริการ <i class="fas fa-check"></i></a>
-        <!-- <a href="#" class="menu-item">บทความ <i class="fas fa-check"></i></a>
-        <a href="#" class="menu-item">ร่วมงานกับเรา</a>
-        <a href="#" class="menu-item">เกี่ยวกับเรา</a> -->
       </div>
     </div>
   </div>
-
-  <!-- Right Slide Menu -->
+  
+  <!-- Slide Menu -->
   <div class="overlay" id="overlay"></div>
   <div class="slide-menu" id="slideMenu">
     <div class="slide-menu-header">
@@ -992,22 +1331,120 @@
       <a href="#" class="slide-menu-link">แผนประกันชีวิตแบบคุ้มครองโรคร้ายแรง</a>
     </div>
   </div>
-
   <script>
+    // Toggle mobile menu
+    document.getElementById('hamburger').addEventListener('click', function() {
+      this.classList.toggle('active');
+      document.getElementById('menuItems').classList.toggle('active');
+      
+      // Animate hamburger icon
+      const spans = this.querySelectorAll('span');
+      if (this.classList.contains('active')) {
+        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+      } else {
+        spans.forEach(span => {
+          span.style.transform = '';
+          span.style.opacity = '';
+        });
+      }
+    });
+  
+    // Toggle dropdown on mobile
+    document.querySelector('.dropdown').addEventListener('click', function(e) {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        this.classList.toggle('active');
+      }
+    });
+  
+    // Open slide menu
+    document.getElementById('life-insurance-link').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('slideMenu').classList.add('active');
+      document.getElementById('overlay').classList.add('active');
+      document.getElementById('menuItems').classList.remove('active');
+      document.getElementById('hamburger').classList.remove('active');
+      
+      // Reset hamburger icon
+      const spans = document.querySelectorAll('.hamburger span');
+      spans.forEach(span => {
+        span.style.transform = '';
+        span.style.opacity = '';
+      });
+    });
+  
+    // Close slide menu
+    document.getElementById('closeBtn').addEventListener('click', function() {
+      document.getElementById('slideMenu').classList.remove('active');
+      document.getElementById('overlay').classList.remove('active');
+    });
+  
+    document.getElementById('overlay').addEventListener('click', function() {
+      document.getElementById('slideMenu').classList.remove('active');
+      this.classList.remove('active');
+    });
+  </script>
+  <script>
+    // Toggle left slide menu
+    document.getElementById('hamburger').addEventListener('click', function() {
+      document.getElementById('leftSlideMenu').classList.add('active');
+      document.getElementById('overlay').classList.add('active');
+      
+      // Animate hamburger icon
+      this.classList.toggle('active');
+      const spans = this.querySelectorAll('span');
+      if (this.classList.contains('active')) {
+        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+      } else {
+        spans.forEach(span => {
+          span.style.transform = '';
+          span.style.opacity = '';
+        });
+      }
+    });
+  
+    // Close left slide menu
+    document.getElementById('leftCloseBtn').addEventListener('click', function() {
+      document.getElementById('leftSlideMenu').classList.remove('active');
+      document.getElementById('overlay').classList.remove('active');
+      document.getElementById('hamburger').classList.remove('active');
+      
+      // Reset hamburger icon
+      const spans = document.querySelectorAll('.hamburger span');
+      spans.forEach(span => {
+        span.style.transform = '';
+        span.style.opacity = '';
+      });
+    });
+  
+    // Keep existing right slide menu functionality
     document.getElementById('life-insurance-link').addEventListener('click', function(e) {
       e.preventDefault();
       document.getElementById('slideMenu').classList.add('active');
       document.getElementById('overlay').classList.add('active');
     });
-
+  
     document.getElementById('closeBtn').addEventListener('click', function() {
       document.getElementById('slideMenu').classList.remove('active');
       document.getElementById('overlay').classList.remove('active');
     });
-
+  
     document.getElementById('overlay').addEventListener('click', function() {
       document.getElementById('slideMenu').classList.remove('active');
+      document.getElementById('leftSlideMenu').classList.remove('active');
       this.classList.remove('active');
+      document.getElementById('hamburger').classList.remove('active');
+      
+      // Reset hamburger icon
+      const spans = document.querySelectorAll('.hamburger span');
+      spans.forEach(span => {
+        span.style.transform = '';
+        span.style.opacity = '';
+      });
     });
   </script>
 
@@ -1099,132 +1536,119 @@
     </div>
   </div>
 
-  <!-- ตารางผลประโยชน์ -->
-  <div class="problem-section">
+<!-- ตารางผลประโยชน์ -->
+<div class="problem-section">
     <div class="container-center">
-      <h2 class="problem-title">3. ตารางผลประโยชน์ BLA Happy Health Premier (Copay)</h2>
-      <div class="flex-container">
-        <img src="t4.jpg" alt="ค่าห้องแพง" class="flex-image">
-      </div><br>
-      <div class="flex-container">ตารางผลประโยชน์ประกันสุขภาพเหมาจ่าย BLA Happy Health Premier</div>
-      <div class="recommendation-section">
-        <p>
-          <strong>***1หากซื้อแผน ‘deduct หรือ มีส่วนรับผิด’ สามารถใช้สิทธิ์ในหมวดที่ 6-13 โดยไม่ต้องจ่าย deduct ก่อนได้</strong> <br><br>
-          <strong>***2 หมวด 1: ค่าห้องระบุว่า 3,000 ต่อวันหรือเหมาจ่ายค่าห้องเดี่ยวเริ่มต้นของรพ. = หมายความว่า อันไหนมากกว่าจ่ายอันนั้น เช่น ค่าห้อง/อาหาร/บริการรพ.ของรพ.กรุงเทพ = 11,000 ฿ ก็จะจ่ายให้ 11,000 ฿ เต็ม ไม่ใช่จ่ายให้แค่ 3,000 ฿</strong><br><br>
-          <strong>***หมวด 7/8 เวลาได้ใบเสนอราคา คำว่าไม่คุ้มครอง ไม่ใช่ว่า ‘ไม่จ่าย’ แต่ในแผนนี้ไม่มีคุ้มครองในส่วนนี้</strong> 
-        </p>
-      </div>
+        <h2 class="problem-title">3. ตารางผลประโยชน์ BLA Happy Health Premier (Copay)</h2>
+        <div class="flex-container">
+            <img src="t4.jpg" alt="ตารางผลประโยชน์" class="flex-image">
+        </div>
+        <div class="flex-container">ตารางผลประโยชน์ประกันสุขภาพเหมาจ่าย BLA Happy Health Premier</div>
+  
+        
+        <div class="recommendation-section">
+            <p><strong>***1 หากซื้อแผน 'deduct หรือ มีส่วนรับผิด' สามารถใช้สิทธิ์ในหมวดที่ 6-13 โดยไม่ต้องจ่าย deduct ก่อนได้</strong></p>
+            
+            <p><strong>***2 หมวด 1: ค่าห้องระบุว่า 3,000 ต่อวันหรือเหมาจ่ายค่าห้องเดี่ยวเริ่มต้นของรพ. = หมายความว่า อันไหนมากกว่าจ่ายอันนั้น เช่น ค่าห้อง/อาหาร/บริการรพ.ของรพ.กรุงเทพ = 11,000 ฿ ก็จะจ่ายให้ 11,000 ฿ เต็ม ไม่ใช่จ่ายให้แค่ 3,000 ฿</strong></p>
+            
+            <p><strong>*** หมวด 7/8 เวลาได้ใบเสนอราคา คำว่าไม่คุ้มครอง ไม่ใช่ว่า 'ไม่จ่าย' แต่ในแผนนี้ไม่มีคุ้มครองในส่วนนี้</strong></p>
+        </div>
     </div>
-  </div>
+</div>
 
 
-         <!-- จึดเด่นทั้ง HH และ HHP -->
- <div class="problem-section">
+        <!-- จุดเด่นทั้ง HH และ HHP -->
+<div class="problem-section">
     <div class="container-center">
         <h2 class="problem-title">4. จุดเด่น ของทั้ง HH และ HHP</h2>
         
-      
-        
-        
-      
-        <div class="problem-section">
-            <div class="container-center">
-             
-            <p><strong>4.1 จ่ายค่าห้องตามจริง ตามอัตราห้องเดี่ยวเริ่มต้นของรพ.</strong><div class="recommendation-section"><p>ดังนั้นไม่ว่าค่าใช้จ่ายในรพ.(ทั้งค่าห้องและค่ารักษา ฯลฯ) จะเฟ้อแค่ไหน (ตามเอกสารอ้างอิงคือ ประมาณ 9% ต่อปี) เราก็จ่ายให้คุณ! 
-                แม้ว่าในหมวด 1 ของค่าห้อง HHP จะเขียนว่า 5,000 บาทหรือจ่ายตามอัตราห้องเดี่ยวเริ่มต้น คนร้อยละ 90% มักอ่านผ่านๆแล้วเข้าใจผิดว่า fix ค่าห้อง แต่เปล่าเลยครับ <br><strong><u>ตัวไหนมากกว่าจ่ายตัวนั้น!</u></strong></p>
+        <div class="recommendation-section">
+            <h3>4.1 จ่ายค่าห้องตามจริง ตามอัตราห้องเดี่ยวเริ่มต้นของรพ.</h3>
+            <p>ดังนั้นไม่ว่าค่าใช้จ่ายในรพ.(ทั้งค่าห้องและค่ารักษา ฯลฯ) จะเฟ้อแค่ไหน (ตามเอกสารอ้างอิงคือ ประมาณ 9% ต่อปี) เราก็จ่ายให้คุณ! แม้ว่าในหมวด 1 ของค่าห้อง HHP จะเขียนว่า 5,000 บาทหรือจ่ายตามอัตราห้องเดี่ยวเริ่มต้น คนร้อยละ 90% มักอ่านผ่านๆแล้วเข้าใจผิดว่า fix ค่าห้อง แต่เปล่าเลยครับ <strong><u>ตัวไหนมากกว่าจ่ายตัวนั้น!</u></strong></p>
+            
+            <h3>4.2 วงเงินค่ารักษาเป็น 'ต่อโรคต่อปี' และหากเจ็บป่วยจาก 3 โรคร้าย มะเร็ง หัวใจ หลอดเลือดสมอง จะได้รับวงเงินความคุ้มครองเพิ่มขึ้น 10%</h3>
+            <p>เฉพาะ 3 โรคร้ายดังนี้ : โรคมะเร็ง โรคหัวใจ หรือโรคหลอดเลือดสมอง จากประสบการณ์ ค่ารักษาในหมวดนี้มักสูงอยู่ที่หลักแสนบาทถึงแตะๆล้านบาทได้เลยทีเดียว เนื่องจากการทำบอลลูนสวนหลอดเลือดหัวใจ คร่าวๆอยู่ที่ 2-3 แสน หรือการทำคีโมฯ (chemotherapy) ที่อิมพอร์ตยาคีโมฯจากต่างประเทศที่มีประสิทธิภาพสูงและราคาก็จะสูงขึ้นตาม ซึ่งการที่ได้รับวงเงินค่ารักษาเพิ่มขึ้นอีก 10% ก็จะทำให้เราอุ่นใจเรื่องค่ารักษาได้ เช่น จากวงเงินค่ารักษา 5,000,000 บาทเป็น 5,500,000 บาท เป็นต้น</p>
+            
+            <h3>4.3 เหมาะกับคนที่มีสวัสดิการอยู่แล้ว และไม่อยากจ่ายเบี้ยแพง</h3>
+            <p>เนื่องจากทั้ง HH และ HHP มีแผน deduct (รับผิดส่วนแรก) 30,000 และ 100,000 บาท ทำให้พนักงานออฟฟิศที่มีประกันกลุ่ม หรือแม้แต่ผู้ที่ถือประกันสุขภาพเล่มอื่นแล้วอยากเอา HH HHP มาโปะค่าห้อง หรือซื้อเสริม ไม่ต้องจ่ายเบี้ยแพงทั้งก้อน และประหยัดค่าเบี้ยไปได้มากถึง 50-70% เลยทีเดียว!</p>
+            
+            <h3>4.4 มีความยืดหยุ่น</h3>
+            <p>หากในช่วงวัยทำงานเรามีสวัสดิการอยู่ แต่พอช่วงเกษียณเราจะไม่มีสวัสดิการใดๆแล้ว BLA ให้สิทธิ์ในการสลับแผนจากแบบ "มีส่วนรับผิด"เป็น"ไม่มีส่วนรับผิด"ได้ในช่วงอายุ 55-65 ปี และจะต้องซื้อมาอย่างน้อย 5 ปีโดยนับความคุ้มครองให้ต่อเนื่องและไม่พิจารณาสุขภาพใหม่! (อ่านเพิ่มเติมใน FAQ)</p>
+            
+            <h3>4.5 ประกันสุขภาพคุ้มครองถึง 99 ปีเลย!</h3>
+            <p>ในช่วงตั้งแต่ปี 2564 และก่อนหน้า ประกันสุขภาพทั่วไปคุ้มครองสูงสุดเพียงอายุ 80 ปี หรือหากเป็นแผนเก่ากว่านั้นอาจคุ้มครองถึงแค่อายุ 70 ปี แต่เนื่องจากสถิติว่าคนไทยจะมีอายุยืนขึ้น ประกันสุขภาพทุกแผนของกรุงเทพประกันชีวิตจึง คุ้มครองถึงอายุ 99 ปี ทั้งหมด</p>
+            
+            <h3>4.6 HH และ HHP เป็นประกันสุขภาพมาตรฐานใหม่ (New Standard Health)</h3>
+            <p>หลายๆท่านอาจจะได้ยินจากข่าว บริษัทประกัน "เท" บ้าง เคลมเยอะ ปรับเบี้ยรายบุคคลขึ้นเยอะบ้าง พอปรับมาเป็น New Standard Health แล้วสิ่งที่เปลี่ยนไปคือ</p>
+                 
+            <ul>
+                <li>บริษัทประกันไม่สามารถเทลูกค้าได้แล้ว ยกเว้นลูกค้าปกปิดประวัติสุขภาพ ฯลฯ</li>
+                <li>หากมีการเคลมเยอะกว่าปกติ บริษัทจะไม่ปรับเบี้ยประกันรายบุคคล แต่จะปรับอ้างอิงจากทุกคนที่ซื้อสินค้าเดียวกัน (portfolio)</li>
+            </ul>
+    
+            <div class="important-note">
+                <h4><i class="fas fa-exclamation-circle"></i> ข้อควรทราบเกี่ยวกับการปรับเบี้ย</h4>
+                <p>แม้ว่า HHP จะเป็นประกันสุขภาพเหมาจ่ายที่ปรับเบี้ยทุกๆ 5 ปีแล้ว อีกปัจจัยนึงที่สามารถส่งผลต่อการเพิ่มเบี้ยได้นั้น คือ <strong>"อัตราการเคลมของทุกคนที่ซื้อแผนประกันนั้นๆ/พอร์ตโฟลิโอ (portfolio)"</strong></p>
                 
-                    
-                     
-                </div>
-                <p><strong>4.2 วงเงินค่ารักษาเป็น ‘ต่อโรคต่อปี’ และหากเจ็บป่วยจาก 3 โรคร้าย มะเร็ง หัวใจ หลอดเลือดสมอง จะได้รับวงเงินความคุ้มครองเพิ่มขึ้น 10%</strong><div class="recommendation-section"><p>เฉพาะ 3 โรคร้ายดังนี้ : โรคมะเร็ง โรคหัวใจ หรือโรคหลอดเลือดสมอง
-                    จากประสบการณ์ ค่ารักษาในหมวดนี้มักสูงอยู่ที่หลักแสนบาทถึงแตะๆล้านบาทได้เลยทีเดียว เนื่องจากการทำบอลลูนสวนหลอดเลือดหัวใจ คร่าวๆอยู่ที่ 2-3 แสน หรือการทำคีโมฯ (chemotherapy) ที่อิมพอร์ตยาคีโมฯจากต่างประเทศที่มีประสิทธิภาพสูงและราคาก็จะสูงขึ้นตาม ซึ่งการที่ได้รับวงเงินค่ารักษาเพิ่มขึ้นอีก 10% ก็จะทำให้เราอุ่นใจเรื่องค่ารักษาได้ เช่น จากวงเงินค่ารักษา 5,000,000 บาทเป็น 5,500,000 บาท เป็นต้น</p>
-                 </div>
-                  <p><strong>4.3. เหมาะกับคนที่มีสวัสดิการอยู่แล้ว และไม่อยากจ่ายเบี้ยแพง</strong><div class="recommendation-section"><p>เนื่องจากทั้ง HH และ HHP มีแผน deduct (รับผิดส่วนแรก) 30,000 และ 100,000 บาท ทำให้พนักงานออฟฟิศที่มีประกันกลุ่ม หรือแม้แต่ผู้ที่ถือประกันสุขภาพเล่มอื่นแล้วอยากเอา HH HHP มาโปะค่าห้อง หรือซื้อเสริม ไม่ต้องจ่ายเบี้ยแพงทั้งก้อน และประหยัดค่าเบี้ยไปได้มากถึง 50-70% เลยทีเดียว!</p>
-                 </div>
-                 <p><strong>4.4. มีความยืดหยุ่น</strong><div class="recommendation-section"><p>หากในช่วงวัยทำงานเรามีสวัสดิการอยู่ แต่พอช่วงเกษียณเราจะไม่มีสวัสดิการใดๆแล้ว BLA ให้สิทธิ์ในการสลับแผนจากแบบ “มีส่วนรับผิด”เป็น”ไม่มีส่วนรับผิด”ได้ในช่วงอายุ 55-65 ปี และจะต้องซื้อมาอย่างน้อย 5 ปีโดยนับความคุ้มครองให้ต่อเนื่องและไม่พิจารณาสุขภาพใหม่!
-                    (อ่านเพิ่มเติมใน FAQ)</p>
-                 </div>
-                 <p><strong>4.5. ประกันสุขภาพคุ้มครองถึง 99 ปีเลย!</strong><div class="recommendation-section"><p>ในช่วงตั้งแต่ปี 2564 และก่อนหน้า ประกันสุขภาพทั่วไปคุ้มครองสูงสุดเพียงอายุ 80 ปี หรือหากเป็นแผนเก่ากว่านั้นอาจคุ้มครองถึงแค่อายุ 70 ปี แต่เนื่องจากสถิติว่าคนไทยจะมีอายุยืนขึ้น ประกันสุขภาพทุกแผนของกรุงเทพประกันชีวิตจึง คุ้มครองถึงอายุ 99 ปี ทั้งหมด</p>
-                 </div>
-
-
-                 <p><strong>4.6 HH และ HHP เป็นประกันสุขภาพมาตรฐานใหม่ (New Standard Health)</p></strong>
+                <p>โดยหากอัตราการเคลมโดยเฉลี่ยสูงกว่ามาตรฐานที่บริษัทตั้งไว้มาก:</p>
+                <ul>
+                    <li>บริษัทประกันมีสิทธิ์ปรับเบี้ยเพิ่ม</li>
+                    <li>ต้องขออนุญาตคปภ.ก่อน</li>
+                    <li>ต้องแจ้งลูกค้าล่วงหน้าเป็นลายลักษณ์อักษรไม่น้อยกว่า 30 วัน ก่อนดำเนินการปรับเบี้ย</li>
+                </ul>
+            </div>
     
-                 <p>หลายๆท่านอาจจะได้ยินจากข่าว บริษัทประกัน "เท" บ้าง เคลมเยอะ ปรับเบี้ยรายบุคคลขึ้นเยอะบ้าง 
-                  พอปรับมาเป็น New Standard Health แล้วสิ่งที่เปลี่ยนไปคือ</p>
-                 
-                 <ul>
-                     <li>บริษัทประกันไม่สามารถเทลูกค้าได้แล้ว ยกเว้นลูกค้าปกปิดประวัติสุขภาพ ฯลฯ</li>
-                     <li>หากมีการเคลมเยอะกว่าปกติ บริษัทจะไม่ปรับเบี้ยประกันรายบุคคล แต่จะปรับอ้างอิงจากทุกคนที่ซื้อสินค้าเดียวกัน (portfolio)</li>
-                 </ul>
-                 
-                 <p>แม้ว่า HHP จะเป็นประกันสุขภาพเหมาจ่ายที่ปรับเบี้ยทุกๆ 5 ปีแล้ว อีกปัจจัยนึงที่สามารถส่งผลต่อการเพิ่มเบี้ยได้นั้น คือ <span class="highlight">"อัตราการเคลมของทุกคนที่ซื้อแผนประกันนั้นๆ/พอร์ตโฟลิโอ (portfolio)"</span> โดยหากอัตราการเคลมโดยเฉลี่ยสูงกว่ามาตรฐานที่บริษัทตั้งไว้มาก บริษัทประกันมีสิทธิ์ปรับเบี้ยเพิ่ม โดยจะต้องขออนุญาตคปภ.ก่อน และต้องแจ้งลูกค้าล่วงหน้าเป็นลายลักษณ์อักษรไม่น้อยกว่า 30 วัน ก่อนดำเนินการปรับเบี้ย</p>
-                 
-                 <p>โดยเงื่อนไขนี้เป็นเงื่อนไขใหม่ของประกันสุขภาพแบบ New Standard Health ไม่ว่าบริษัทไหน ก็จะใช้เกณฑ์เดียวกันทั้งหมดครับ โดยเฉพาะทุกๆสินค้าที่เปิดขายใหม่ตั้งแต่ประมาณปี 2019 นั้นล้วนใช้เงื่อนไข New Standard Health ทั้งสิ้น</p>
-                 
-                 <p class="emphasis">*****แม้สินค้าประกันสุขภาพจะเปิดตัวในช่วงโควิด19 ที่มีอัตราการเคลมประกันสูงมาก อย่างไรก็ตาม "ทุกสินค้า" ของ BLA ยังไม่เคยมีการปรับเบี้ยใดๆจากตารางเบี้ยที่ออกมา ณ ตอนเปิดตัวสินค้าเลย ไม่ว่าจะเป็นสินค้า BLA Happy Health หรือ BLA Prestige Health เองก็ตาม</p>
-                 
-                 <p class="note">จึงทำให้มั่นใจในบริษัทนี้มากๆ อย่างไรก็ตามไม่ได้หมายความว่าในอนาคตตารางเบี้ยจะไม่เปลี่ยนแปลง*</p>
-
-
-        
-    
-         <div class="important-note">
-        <h4><i class="fas fa-exclamation-circle"></i> ข้อควรทราบเกี่ยวกับการปรับเบี้ย</h4>
-        <p>แม้ว่า HHP จะเป็นประกันสุขภาพเหมาจ่ายที่ปรับเบี้ยทุกๆ 5 ปีแล้ว อีกปัจจัยนึงที่สามารถส่งผลต่อการเพิ่มเบี้ยได้นั้น คือ <strong>"อัตราการเคลมของทุกคนที่ซื้อแผนประกันนั้นๆ/พอร์ตโฟลิโอ (portfolio)"</strong></p>
-        
-        <p>โดยหากอัตราการเคลมโดยเฉลี่ยสูงกว่ามาตรฐานที่บริษัทตั้งไว้มาก:</p>
-        <div class="important-note">
-            <li>บริษัทประกันมีสิทธิ์ปรับเบี้ยเพิ่ม</li>
-            <li>ต้องขออนุญาตคปภ.ก่อน</li>
-            <li>ต้องแจ้งลูกค้าล่วงหน้าเป็นลายลักษณ์อักษรไม่น้อยกว่า 30 วัน ก่อนดำเนินการปรับเบี้ย</li>
+            <div class="standard-info">
+                <p>เงื่อนไขนี้เป็นเงื่อนไขใหม่ของประกันสุขภาพแบบ New Standard Health ไม่ว่าบริษัทไหน ก็จะใช้เกณฑ์เดียวกันทั้งหมด โดยเฉพาะทุกๆ สินค้าที่เปิดขายใหม่ตั้งแต่ประมาณปี 2019 นั้นล้วนใช้เงื่อนไข New Standard Health ทั้งสิ้น</p>
+                
+                <p class="emphasis">*****แม้สินค้าประกันสุขภาพจะเปิดตัวในช่วงโควิด19 ที่มีอัตราการเคลมประกันสูงมาก อย่างไรก็ตาม "ทุกสินค้า" ของ BLA ยังไม่เคยมีการปรับเบี้ยใดๆจากตารางเบี้ยที่ออกมา ณ ตอนเปิดตัวสินค้าเลย ไม่ว่าจะเป็นสินค้า BLA Happy Health หรือ BLA Prestige Health เองก็ตาม</p>
+                
+                <p class="note">จึงทำให้มั่นใจในบริษัทนี้มากๆ อย่างไรก็ตามไม่ได้หมายความว่าในอนาคตตารางเบี้ยจะไม่เปลี่ยนแปลง*</p>
+            </div>
         </div>
-       </div>
-    
-       <div class="standard-info">
-        <p>เงื่อนไขนี้เป็นเงื่อนไขใหม่ของประกันสุขภาพแบบ New Standard Health ไม่ว่าบริษัทไหน ก็จะใช้เกณฑ์เดียวกันทั้งหมด โดยเฉพาะทุกๆ สินค้าที่เปิดขายใหม่ตั้งแต่ประมาณปี 2019 นั้นล้วนใช้เงื่อนไข New Standard Health ทั้งสิ้น</p>
-        </div>
-  </div> 
+    </div>
+    </div>
      
 
+        <!-- ข้อจำกัด HHP-->
+        <div class="problem-section"> <div class="container-center"> <h2 class="problem-title">5. ข้อจำกัดของ HHP</h2>
+            <div class="recommendation-section">
+                <h3>5.1 ไม่มีประกันอุบัติเหตุ/มีแต่ให้น้อย (สามารถซื้อเพิ่มได้)</h3>
+                <p>แม้ว่าแผน BLA Happy Health จะไม่มีแถมประกันอุบัติเหตุให้ แต่เราสามารถซื้อสัญญาเพิ่มเติมเข้าไปได้ คือ</p>
+                <ul>
+                    <li>ประกันอุบัติเหตุค่ารักษา (ชื่อใน BLA คือ อบ.3)</li>
+                    <li>จ่ายค่ารักษาให้ 50,000 บาท ต่อเหตุการณ์</li>
+                    <li>Follow-up ได้ต่อเนื่อง 52 สัปดาห์หรือ 1 ปี</li>
+                    <li>เบี้ย 'คงที่' ถึงอายุ 65 ปี</li>
+                    <li>เบี้ยเพียงแค่ประมาณ <span class="price">1,000 บาทต่อปี</span> เท่านั้น!</li>
+                </ul>
+                
+                <h3>5.2 ไม่คุ้มครอง MRI, CT Scan แบบ OPD</h3>
+                <p>แผน HHP ไม่ครอบคลุมการตรวจ MRI หรือ CT Scan ในกรณีผู้ป่วยนอก (OPD) 
+                <div class="recommendation">
+                    <i class="fas fa-lightbulb"></i> แนะนำให้ดูแผน BLA Prestige Health ปลดล็อค แทน
+                </div>
+                </p>
+                
+                <h3>5.3 ไม่คุ้มครองต่างประเทศ</h3>
+                <p>แผนนี้ไม่ครอบคลุมการรักษาพยาบาลในต่างประเทศ
+                <div class="recommendation">
+                    <p>แนะนำให้ซื้อประกันเดินทางมากกว่า โดยสามารถซื้อผ่านเราได้ที่ลิงค์นี้ <a href="#" class="cta-button">คลิกเพื่อซื้อประกันเดินทาง <i class="fas fa-arrow-right"></i></a></p>
+                </div>
+                </p>
+                
+                <h3>5.4 ไม่คุ้มครองการรักษาด้วยการแพทย์แผนใหม่ๆ</h3>
+                <p>แผนนี้ไม่ครอบคลุมการรักษาด้วยวิธีใหม่ๆ เช่น immunotherapy, stem cell therapy ฯลฯ อย่างไรก็ตามแผนนี้คุ้มครอง Targeted therapy (หรือ ยามุ่งเป้า) ซึ่งปัจจุบันถูกพิสูจน์แล้วว่ามีประสิทธิภาพกำจัดมะเร็งสูงมาก</p>
+                
+                <div class="highlight">
+                    <p><strong>หากเรื่องวิธีการรักษาสำคัญสำหรับคุณมากๆ</strong> แนะนำแผน BLA Prestige Health ปลดล็อค แทน</p>
+                </div>
+            </div>
+        </div>
+    
 
-    
-    <div class="container-center">
-        <h2 class="problem-title">5. ข้อจำกัด HHP</h2>
-        <p><strong>5.1. ไม่มีประกันอุบัติเหตุ/มีแต่ให้น้อย (สามารถซื้อเพิ่มได้)</strong>
-    <p>แม้ว่าแผน BLA Happy Health จะไม่มีแถมประกันอุบัติเหตุให้ แต่เราสามารถซื้อสัญญาเพิ่มเติมเข้าไปได้ คือ</p>
-    <ul>
-        <li>ประกันอุบัติเหตุค่ารักษา หรือ (ชื่อใน BLA คือ อบ.3) เช่น ซื้อความคุ้มครองที่ 50,000 บาท</li>
-        <li>จ่ายค่ารักษาให้ 50,000 บาท ต่อเหตุการณ์</li>
-        <li>follow-up ได้ต่อเนื่อง 52 สัปดาห์หรือ 1 ปี และ</li>
-        <li>เบี้ย 'คงที่' ถึงอายุ 65 ปี</li>
-        <li>เบี้ยเพียงแค่ประมาณ <span class="price">1,000 บาทต่อปี</span> เท่านั้น!</li>
-    </ul>
-    
-    <p><strong>5.2. ไม่คุ้มครอง MRI, CT Scan แบบ OPD</strong>
-    <div class="recommendation">
-        <i class="fas fa-lightbulb"></i> แนะนำให้ดูแผน BLA Prestige Health ปลดล็อค แทน
-    </div>
-    
-    <p><strong>5.3 ไม่คุ้มครองต่างประเทศ</strong>
-    <div class="recommendation">
-        <p>แนะนำให้ซื้อประกันเดินทางมากกว่า โดยสามารถซื้อผ่านเราได้ที่ลิงค์นี้ <a href="#" class="cta-button">คลิกเพื่อซื้อประกันเดินทาง <i class="fas fa-arrow-right"></i></a></p>
-        
-    </div>
-    
-    <p><strong>5.4 ไม่คุ้มครองการรักษาด้วยการแพทย์แผนใหม่ๆ เช่น immunotherapy, stem cell therapy ฯลฯ </strong>
-    <p>อย่างไรก็ตามแผนนี้คุ้มครอง Targeted therapy (หรือ ยามุ่งเป้า) ซึ่งปัจจุบันถูกพิสูจน์แล้วว่ามีประสิทธิภาพกำจัดมะเร็งสูงมาก</p>
-    
-    <div class="highlight">
-        <p><strong>หากเรื่องวิธีการรักษาสำคัญสำหรับคุณมากๆ</strong> แนะนำแผน BLA Prestige Health ปลดล็อค แทน</p>
-    </div>
-    </p>
-</div>
-    
-
-
-<div class="container-center">
-    <h2 class="problem-title">6. ตารางเบี้ย HHP</h2>
+        <div class="problem-section"> <div class="container-center"> <h2 class="problem-title">6. ตารางเบี้ย HHP</h2>
+ 
     <p><strong</strong>
         <p>BLA Happy Health ค่าเบี้ยจะเพิ่มขึ้นทุก 5 ปี และมากไปกว่านั้น นอกจากอัตราการเพิ่มเบี้ยที่เป็นไปตามอาชีพ เพศ และช่วงอายุที่บริษัทได้กำหนดไว้ เช่น ทุก 5 ปีหรือทุกปี นอกเหนือจากข้อนี้ <span class="highlight-yellow">อัตราการเพิ่มเบี้ยจะขึ้นอยู่กับ "อัตราการเคลมของทุกคนที่ซื้อแผนประกันนั้นๆ/พอร์ตโฟลิโอ (portfolio)" โดยหากอัตราการเคลมโดยเฉลี่ยสูงกว่ามาตรฐานที่บริษัทตั้งไว้มาก บริษัทประกันมีสิทธิ์ปรับเบี้ยเพิ่ม โดยจะต้องขออนุญาตคปภ.ก่อน และต้องแจ้งลูกค้าล่วงหน้าเป็นลายลักษณ์อักษรไม่น้อยกว่า 30 วัน ก่อนดำเนินการปรับเบี้ย</span></p>
  
@@ -1239,86 +1663,83 @@
 </div>
 
  
-    <div class="flex-container">
-        <img src="t5.jpg" alt="ค่าห้องแพง" class="flex-image">
-    </div><br>
-    <div class="flex-container">ตารางเบี้ย BLA Happy Health และ Happy Health พรีเมียร์เพศชาย</div> 
+<div class="image-display-section"> <div class="high-res-container"> <img src="t5.jpg" alt="ตารางเบี้ยเพศชาย" class="high-res-image"> <div class="image-caption">ตารางเบี้ย BLA Happy Health และ Happy Health พรีเมียร์เพศชาย</div> </div> </div>
 
     <br>
-    <div class="flex-container">
-        <img src="t6.jpg" alt="ค่าห้องแพง" class="flex-image">
-    </div><br>
-    <div class="flex-container">ตารางเบี้ย BLA Happy Health และ Happy Health พรีเมียร์เพศหญิง</div> 
-
+  
+    <div class="image-display-section"> <div class="high-res-container"> <img src="t6.jpg" alt="ตารางเบี้ยเพศชาย" class="high-res-image"> <div class="image-caption">ตารางเบี้ย BLA Happy Health และ Happy Health พรีเมียร์เพศหญิง</div> </div> </div>
     <br>
     <!-- Contact Section -->
-    <section class="section contact" id="contact">
-        <h2 class="section-title">ติดต่อเรา</h2>
-        <div class="contact-grid">
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="contact-text">
-                        <h3>ที่อยู่</h3>
-                        <p>1415 ถ.กรุงเทพ - นนทบุรี   แขวงวงศ์สว่าง บางซื่อ กรุงเทพมหานคร 10800</p>
-                    </div>
+<section class="section contact" id="contact">
+    <h2 class="section-title">ติดต่อเรา</h2>
+    <div class="contact-grid">
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-map-marker-alt"></i>
                 </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone-alt"></i>
-                    </div>
-                    <div class="contact-text">
-                        <h3>โทรศัพท์</h3>
-                        <p><a href="tel:+6621234567">088-595-4464</a></p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="contact-text">
-                        <h3>อีเมล</h3>
-                        <p><a href="mailto:info@example.com">kitiya.wealth@gmail.com</a></p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <div class="contact-text">
-                        <h3>เวลาทำการ</h3>
-                        <p>จันทร์-อาทิตย์:สามารถติดต่อสอบถาม ปรึกษาฟรี!!</p>
-                    </div>
+                <div class="contact-text">
+                    <h3>ที่อยู่</h3>
+                    <p>1415 ถ.กรุงเทพ - นนทบุรี แขวงวงศ์สว่าง บางซื่อ กรุงเทพมหานคร 10800</p>
                 </div>
             </div>
-            <div class="contact-form">
-                <form>
-                    <div class="form-group">
-                        <label for="name">ชื่อ-นามสกุล</label>
-                        <input type="text" id="name" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">อีเมล</label>
-                        <input type="email" id="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">โทรศัพท์ </label>
-                        <input type="tel" id="phone" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">ข้อความ</label>
-                        <textarea id="message" class="form-control" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">
-                        <i class="fas fa-paper-plane"></i> ส่งข้อความ
-                    </button>
-                </form>
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <div class="contact-text">
+                    <h3>โทรศัพท์</h3>
+                    <p><a href="tel:+6621234567">088-595-4464</a></p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contact-text">
+                    <h3>อีเมล</h3>
+                    <p><a href="mailto:info@example.com">kitiya.wealth@gmail.com</a></p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="contact-text">
+                    <h3>เวลาทำการ</h3>
+                    <p>จันทร์-อาทิตย์:สามารถติดต่อสอบถาม ปรึกษาฟรี!!</p>
+                </div>
             </div>
         </div>
-    </section>
-    <footer>
+        <div class="contact-form">
+            <form>
+                <div class="form-group">
+                    <label for="name">ชื่อ-นามสกุล</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">อีเมล</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">โทรศัพท์</label>
+                    <input type="tel" id="phone" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="message">ข้อความ</label>
+                    <textarea id="message" class="form-control" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> ส่งข้อความ
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p class="copyright">กิติยา เสาวกุล ตัวแทนประกันชีวิต</p>
+</footer>
     <!-- Footer
     <footer>
 
@@ -1335,8 +1756,7 @@
             <a href="#">ข้อกำหนดและเงื่อนไข</a>
         </div>
          -->
-        <p class="copyright">กิติยา เสาวกุล ตัวแทนประกันชีวิต</p>
-    </footer>
+ 
 
     <script>
         // Smooth scrolling for anchor links
