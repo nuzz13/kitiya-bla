@@ -1222,8 +1222,11 @@ textarea.form-control {
 
 /* Footer Styles */
 footer {
+    display: flex;
     background-color: #ffffff;
     color: rgb(255, 255, 255);
+    justify-content: center;
+    align-items: center;
     text-align: center;
     padding: 20px;
     margin-top: 40px;
@@ -1270,17 +1273,24 @@ footer {
         justify-content: center;
     }
 }
+/* Centering the Footer */
 footer {
-    background-color: #0077ff; /* Bright blue background */
-    color: #ffffff; /* White text for contrast */
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    background-color: #0077ff; /* Bright blue */
+    color: #ffffff;
     padding: 15px;
+    height: 60px;
     text-align: center;
 }
 
+/* Ensure Text Alignment */
 .copyright {
-    font-size: 16px;
-    font-weight: bold;
+    text-align: center;
+    margin: auto;
 }
+
 
 
 
@@ -1711,92 +1721,104 @@ footer {
                 </div>
             </div>
         </div>
+
+
         <div class="contact-form">
-            <form>
-                <div class="form-group">
-                    <label for="name">ชื่อ-นามสกุล</label>
-                    <input type="text" id="name" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">อีเมล</label>
-                    <input type="email" id="email" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">โทรศัพท์</label>
-                    <input type="tel" id="phone" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="message">ข้อความ</label>
-                    <textarea id="message" class="form-control" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">
-                    <i class="fas fa-paper-plane"></i> ส่งข้อความ
-                </button>
+            <form id="contactForm">
+              <div class="form-group">
+                <label for="name">ชื่อ-นามสกุล</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="email">อีเมล</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">โทรศัพท์</label>
+                <input type="tel" id="phone" name="phone" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="message">ข้อความ</label>
+                <textarea id="message" name="message" class="form-control" required></textarea>
+              </div>
+              <button type="submit" class="submit-btn">
+                <i class="fas fa-paper-plane"></i> ส่งข้อความ
+              </button>
             </form>
-        </div>
-    </div>
-</section>
+            <div id="formMessage" class="form-message" style="display:none;"></div>
+          </div>
+        <!--- <footer>
+            <p class="copyright">กิติยา เสาวกุล ตัวแทนประกันชีวิต</p>
+          </footer> -->
+          
+ <script>
+     document.getElementById('contactForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-<footer>
-    <p class="copyright">กิติยา เสาวกุล ตัวแทนประกันชีวิต</p>
-</footer>
-    <!-- Footer
-    <footer>
+    const form = e.target;
+    const submitBtn = form.querySelector('.submit-btn');
+    const formMessage = document.getElementById('formMessage');
 
-     <!--    <div class="footer-logo">
-            <img src="https://via.placeholder.com/50" alt="Company Logo">
-        </div>
+    // Show loading state
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> กำลังส่ง...';
 
-        <div class="footer-links">
-            <a href="#about">เกี่ยวกับเรา</a>
-            <a href="#services">บริการ</a>
-            <a href="#team">ทีมงาน</a>
-            <a href="#contact">ติดต่อ</a>
-            <a href="#">นโยบายความเป็นส่วนตัว</a>
-            <a href="#">ข้อกำหนดและเงื่อนไข</a>
-        </div>
-         -->
+    try {
+        await Promise.all([
+            fetch('https://formsubmit.co/ajax/kitiya.wealth@gmail.com', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    _subject: 'ลูกค้าสนใจประกัน', // Fixed subject
+                    _template: 'table',
+                    _body: `เรียน คุณบิ๊ก,\n\nข้อมูลลูกค้าสนใจประกัน กรุณาติดต่ออีกครั้งนะจ๊ะ\n\nชื่อ-นามสกุล: ณัฐวุฒิ อยู่จุ้ย\nอีเมล: nuttawut_you@sbito.co.th\nโทรศัพท์: 0832299980\nข้อความ: ทดสอบๆๆๆๆๆ\n\nขอบคุณค่ะ`
+                })
+            }),
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    apikey: '8952ef95-9db9-4eb6-aba9-533f93cddc9d',
+                    subject: 'ลูกค้าสนใจประกัน', // Fixed subject
+                    body: `เรียน คุณบิ๊ก,\n\nข้อมูลลูกค้าสนใจประกัน กรุณาติดต่ออีกครั้งนะจ๊ะ\n\nชื่อ-นามสกุล: ณัฐวุฒิ อยู่จุ้ย\nอีเมล: nuttawut_you@sbito.co.th\nโทรศัพท์: 0832299980\nข้อความ: ทดสอบๆๆๆๆๆ\n\nขอบคุณค่ะ`
+                })
+            })
+        ]);
+
+        formMessage.style.display = 'block';
+        formMessage.style.backgroundColor = '#4CAF50';
+        formMessage.textContent = 'ส่งข้อมูลสำเร็จ!';
+        form.reset();
+    } catch (error) {
+        formMessage.style.display = 'block';
+        formMessage.style.backgroundColor = '#f44336';
+        formMessage.textContent = 'ส่งไม่สำเร็จ: ' + error.message;
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> ส่งข้อความ';
+    }
+});
+
  
-
-    <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Animation on scroll
-        document.addEventListener('DOMContentLoaded', () => {
-            const animateOnScroll = () => {
-                const elements = document.querySelectorAll('.service-card, .team-card, .about-image, .contact-form');
-                
-                elements.forEach(element => {
-                    const elementPosition = element.getBoundingClientRect().top;
-                    const windowHeight = window.innerHeight;
-                    
-                    if (elementPosition < windowHeight - 100) {
-                        element.style.opacity = '1';
-                        element.style.transform = 'translateY(0)';
-                    }
-                });
-            };
-
-            // Set initial state
-            const animatedElements = document.querySelectorAll('.service-card, .team-card, .about-image, .contact-form');
-            animatedElements.forEach(element => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(30px)';
-                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            });
-
-            // Trigger on load and scroll
-            animateOnScroll();
-            window.addEventListener('scroll', animateOnScroll);
-        });
-    </script>
+          </script>
+          
+          <style>
+          .form-message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            transition: all 0.3s ease;
+          }
+          
+          .submit-btn {
+            transition: all 0.3s ease;
+          }
+          
+          .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+          }
+          </style>
 </body>
 </html>
