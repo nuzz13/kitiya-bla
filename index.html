@@ -7,6 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Sarabun:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+     <!-- Make sure Font Awesome is included in your project -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         :root {
             --primary: #4f46e5;
@@ -157,6 +159,27 @@
   .dropdown-item:hover {
     background-color: #f5f5f5;
   }
+  .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-left: 20px;
+    }
+    
+    .social-icon {
+      color: #b6cfb6;
+      font-size: 18px;
+      transition: color 0.3s;
+    }
+    
+    .social-icon:hover {
+      color: #dee4eb;
+    }
+    
+    /* Adjust menu items alignment */
+    .menu-items {
+      display: flex;
+      align-items: center;
+    }
 
   /* Hamburger Menu */
   .hamburger {
@@ -1291,39 +1314,125 @@ footer {
     margin: auto;
 }
 
+.hexagon-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px auto;
+  width: 200px;
+  height: 230px;
+  position: relative;
+}
 
+.hexagon-shape {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #4f46e5, #10b981);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  transition: all 0.5s ease;
+}
+
+.hexagon-shape::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background: white;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  z-index: 1;
+}
+
+.logo-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #4f46e5;
+  padding: 20px;
+}
+
+.logo-text {
+  display: block;
+  font-family: 'Kanit', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.3;
+  background: linear-gradient(135deg, #4f46e5, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.hexagon-logo:hover .hexagon-shape {
+  transform: rotate(15deg) scale(1.05);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hexagon-logo {
+    width: 150px;
+    height: 173px;
+  }
+  .logo-text {
+    font-size: 18px;
+  }
+}
 
 
     </style>
 
 </head>
 <body>
+ 
 <!-- Menu Bar Container -->
 <div class="menu-container">
-    <div class="menu-bar">
-      <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <div class="menu-items" id="menuItems">
-        <div class="dropdown">
-          <a href="#" class="menu-item">ผลิตภัณฑ์ <i class="fas fa-chevron-down dropdown-icon"></i></a>
-          <div class="dropdown-content">
-            <a href="#" id="life-insurance-link" class="dropdown-item">
-              <i class="fas fa-shield-alt"></i>
-              <span>ประกันชีวิต/Life Insurance</span>
-            </a>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-heartbeat"></i>
-              <span>ประกันสุขภาพ/Health Insurance</span>
-            </a>
-          </div>
+  <div class="menu-bar">
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="menu-items" id="menuItems">
+      <div class="dropdown">
+        <a href="#" class="menu-item">ผลิตภัณฑ์ <i class="fas fa-chevron-down dropdown-icon"></i></a>
+        <div class="dropdown-content">
+          <a href="#" id="life-insurance-link" class="dropdown-item">
+            <i class="fas fa-shield-alt"></i>
+            <span>ประกันชีวิต/Life Insurance</span>
+          </a>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-heartbeat"></i>
+            <span>ประกันสุขภาพ/Health Insurance</span>
+          </a>
         </div>
-        <a href="#" class="menu-item">บริการ <i class="fas fa-check"></i></a>
+      </div>
+      <a href="#" class="menu-item">บริการ <i class="fas fa-check"></i></a>
+      
+      <!-- Social Media Icons -->
+      <div class="social-icons">
+        <a href="https://facebook.com" target="_blank" class="social-icon">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="mailto:contact@wunlawealth.com" class="social-icon">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="#" class="social-icon">
+          <i class="fab fa-line"></i>
+        </a>
+        <a href="https://youtube.com" target="_blank" class="social-icon">
+          <i class="fab fa-youtube"></i>
+        </a>
       </div>
     </div>
   </div>
+</div>
   
   <!-- Slide Menu -->
   <div class="overlay" id="overlay"></div>
@@ -1333,8 +1442,8 @@ footer {
       <button class="close-btn" id="closeBtn"><i class="fas fa-times"></i></button>
     </div>
     <div class="slide-menu-content">
-      <a href="#" class="slide-menu-link">แผนประกันชีวิตพื้นฐาน</a>
-      <a href="#" class="slide-menu-link">แผนประกันชีวิตแบบสะสมทรัพย์</a>
+      <a href="#" class="slide-menu-link">เปรียบเทียบประกันสะสมทรัพย์ผลตอบแทนสูง 2568 เพื่อการลดหย่อนภาษี กรุงเทพประกันชีวิต (ฺBEST Of BLA)</a>
+      <a href="#" class="slide-menu-link">เปรียบเทียบประกันบำราญ ลดหย่อนภาษี กรุงเทพประกันชีวิต เบี้ยถูก จ่ายสั้น ยกเครื่องใหม่ ไฉไล กว่าเดิม!!</a>
       <a href="#" class="slide-menu-link">แผนประกันชีวิตแบบตลอดชีพ</a>
       <a href="#" class="slide-menu-link">แผนประกันชีวิตแบบชำระเบี้ยจำกัด</a>
       <a href="#" class="slide-menu-link">แผนประกันชีวิตแบบบำนาญ</a>
@@ -1820,5 +1929,44 @@ footer {
             cursor: not-allowed;
           }
           </style>
+
+        <!-- Floating LINE Button -->
+<div class="floating-line-button">
+  <a href="https://line.me/ti/p/~nuzz13" target="_blank">
+      <img src="https://scdn.line-apps.com/n/line_add_friends/btn/th.png" alt="เพิ่มเพื่อนทาง LINE" height="36">
+  </a>
+</div>
+
+<style>
+  /* Floating Line Button Styles */
+  .floating-line-button {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 9999;
+      transition: all 0.3s ease;
+      animation: float 2s ease-in-out infinite;
+  }
+  
+  .floating-line-button:hover {
+      transform: scale(1.1);
+      animation: none;
+  }
+  
+  @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+  }
+  
+  /* Responsive adjustment */
+  @media (max-width: 768px) {
+      .floating-line-button {
+          right: 10px;
+          bottom: 10px;
+      }
+  }
+</style>
+
 </body>
 </html>
