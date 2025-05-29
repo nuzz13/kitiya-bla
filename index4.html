@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <title>ฺBLA Happy Life | Kitiya ตัวแทนประกันชีวิต</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ลงทุนสบายใจด้วยเทคโนโลยี ลงทุนระยะยาวอย่างมีหลักการ บริหารและปรับพอร์ตอัตโนมัติ ค่าธรรมเนียมการจัดการ 0.5% ต่อปี เริ่มต้นลงทุน Wealth Tech แห่งแรก...">
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+   * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Kanit', sans-serif;
+  line-height: 1.6;
+  color: #1f2d3d;
+  background-color: #f9fafb;
+}
+
+.container {
+    display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1140px;
+  margin: auto;
+  padding: 0 1rem;
+}
+
+header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 1rem 0;
+}
+
+.brand {
+   display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+
+.brand a img {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+}
+
+.nav-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.main-nav {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: #374151;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.main-nav a:hover {
+  color: #00b894;
+}
+
+.auth-buttons a {
+  margin-left: 1rem;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.login-btn {
+  background: none;
+  color: #00b894;
+  border: 1px solid #00b894;
+}
+
+.signup-btn {
+  background: #00b894;
+  color: white;
+  border: none;
+}
+
+.signup-btn:hover,
+.login-btn:hover {
+  opacity: 0.85;
+}
+
+.hero {
+  background: linear-gradient(to right, #e0f7f4, #ffffff);
+  padding: 4rem 0;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #374151;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin: 1rem 0;
+  color: #1f2d3d;
+}
+
+.features {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+.features li {
+  margin: 0.5rem 0;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.features li::before {
+  content: "✓";
+  color: #00b894;
+  position: absolute;
+  left: 0;
+}
+
+.button {
+  background: #00b894;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.button:hover {
+  background: #019e7c;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.badge {
+  background-color: #ffffff;
+  border-left: 4px solid #00b894;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 500px;
+  margin-top: 2rem;
+  border-radius: 16px;
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .main-nav {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .auth-buttons {
+    margin-top: 1rem;
+  }
+
+  .hero {
+    text-align: center;
+  }
+
+  .hero-image img {
+    margin: 2rem auto 0;
+  }
+
+  .nav-btn {
+    display: block;
+  }
+
+  .brand {
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+.logo-img {
+  height: 78px;
+  width: 78px;
+  border-radius: 78%;
+  object-fit: cover;
+  display: block;
+  border: 2px solid #e5e7eb; /* ขอบสีเทาอ่อน */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* เงาเบาๆ */
+}
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.profile-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.hero-profile-img {
+  width: 500;
+  height: 500px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e5e7eb; /* ขอบเทาอ่อน */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เงาเบาๆ */
+  display: block;
+  margin: auto;
+}
+.footer {
+  background-color: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  padding: 2rem 1rem;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.footer-container {
+  max-width: 1140px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.footer-brand h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-brand .Kitiya {
+  color: #00b894;
+  font-weight: bold;
+}
+
+.footer-brand .wealth {
+  color: #374151;
+  font-weight: bold;
+}
+
+.footer-section h4 {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #1f2d3d;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.4rem;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+
+
+
+.contact-section {
+  background-color: #f1f7fb;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.contact-container {
+  max-width: 900px;
+  margin: auto;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.contact-container h2 {
+  font-size: 2rem;
+  color: #1f2d3d;
+  margin-bottom: 0.5rem;
+}
+
+.contact-container p {
+  color: #4b5563;
+  margin-bottom: 2rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.form-group {
+  flex: 1 1 45%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.full-width {
+  flex: 1 1 100%;
+}
+
+label {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+input,
+select,
+textarea {
+  padding: 0.6rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  background-color: #fff;
+  resize: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #00b894;
+  box-shadow: 0 0 0 2px rgba(0, 184, 148, 0.2);
+}
+
+.submit-btn {
+  width: 120px;
+  padding: 0.6rem;
+  background-color: #0d1f2d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+  align-self: flex-start;
+}
+
+.submit-btn:hover {
+  background-color: #122b3a;
+}
+
+@media (max-width: 768px) {
+  .form-group {
+    flex: 1 1 100%;
+  }
+
+  .submit-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+.why-section {
+  padding: 4rem 1rem;
+  background-color: #ffffff;
+}
+
+.why-container {
+  max-width: 1140px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.why-image img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.why-content {
+  flex: 1 1 50%;
+  min-width: 300px;
+}
+
+.why-subtitle {
+  font-size: 0.9rem;
+  color: #4b5563;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.why-title {
+  font-size: 1.75rem;
+  color: #1f2d3d;
+  margin-bottom: 2rem;
+}
+
+.why-box {
+  background-color: #f9fafb;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.04);
+}
+
+.why-box h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.why-box p {
+  font-size: 0.95rem;
+  color: #374151;
+  line-height: 1.6;
+}
+
+.checkmark {
+  color: #00b894;
+  font-weight: bold;
+  margin-right: 0.4rem;
+}
+
+@media (max-width: 768px) {
+  .why-container {
+    flex-direction: column;
+  }
+
+  .why-content {
+    flex: 1 1 100%;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <div class="container">
+        <div class="brand">
+          <a href="/" aria-label="Logo">
+            <img src="KW.png" alt="Kitiya Wealth Logo" class="logo-img">
+          </a>
+          <button class="nav-btn" title="Menu">
+            <em>☰</em>
+          </button>
+        </div>
+      <nav>
+        <ul class="main-nav">
+          <li><a href="#">ผลิตภัณฑ์ </a></li>
+          <li><a href="/blog">บริการ</a></li>
+          <li><a href="/howto">วิธีลงทุน</a></li>
+          <li><a href="/contactus">ติดต่อเรา</a></li>
+        </ul>
+        <div class="auth-buttons">
+          <a href="https://app.Kitiyawealth.com/login" class="login-btn">เข้าสู่ระบบ</a>
+          <a href="https://app.Kitiyawealth.com/signup" class="signup-btn">เริ่มต้นลงทุน</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <p>ทำไมต้องวางแผนทางการเงิน</p>
+        <h1>ถ้าคนไทยทุกคนมีอิสรภาพทางการเงิน จะเป็นยังไงนะ?</h1>
+        <ul class="features">
+          <li>ได้ท่องเที่ยว ออกไปใช้ชีวิต มีเวลามีเงินดูแลตัวเองและครอบครัวโดยที่ไม่ต้องกลัวเลยว่าจะมีเงินพอเลี้ยงตัวเองตอนเกษียณไหม</li>
+          <li>แต่ตอนนี้เรายุ่งมากๆ ซื้อสินค้าทางการเงินนู้นนี่ ทั้งๆที่ไม่รู้เลยว่ามันตอบโจทย์เป้าหมายชีวิตหรือเหมาะสมกับเราหรือเปล่า</li>
+          <li>ดูแลและให้คำปรึกษาเรื่องเงินทุกๆด้าน ผ่านการวางแผนทางการเงินเพื่อให้คุณมั่นใจได้ว่า คุณสามารถเกษียณอย่างเกษม เปลี่ยนภาษีเป็นเงินออม รวมถึงลงทุนเพื่อให้ชนะเงินเฟ้อ</li>
+          <li>โดยหวังว่าคุณจะมี Peace of mind และเข็มทิศในการใช้ชีวิต ทันทีหลังจากที่คุยกับเรา</li>
+        </ul>
+        <a href="https://app.Kitiyawealth.com/signup" class="button">เริ่มต้นลงทุน</a>
+        <div class="badges">
+          <div class="badge">
+            <strong>Wealth Tech แห่งแรก<br>ที่ได้รับอนุญาตจากสำนักงาน ก.ล.ต.</strong>
+          </div>
+          <div class="badge">
+            <strong>บลจ. ที่บริหารกองทุนส่วนบุคคล<br>มากที่สุดในประเทศไทย</strong>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="pf.jpg" alt="Kitiya Wealth Advisor" class="hero-profile-img">
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const navBtn = document.querySelector('.nav-btn');
+      const nav = document.querySelector('nav');
+      navBtn.addEventListener('click', function() {
+        nav.classList.toggle('active');
+      });
+    });
+  </script>
+
+
+<section class="why-section">
+    <div class="why-container">
+      <div class="why-image">
+        <img src="big1.jpg" alt="Kitiya Wealth®️">
+      </div>
+      <div class="why-content">
+        <p class="why-subtitle">WHY KITIYA WEALTH®</p>
+        <h2 class="why-title">ทำไมต้อง Kitiya Wealth<sup>®</sup></h2>
+  
+        <div class="why-box">
+          <h4><span class="checkmark">✔</span> จุดเด่น</h4>
+          <p>
+            Kitiya Wealth<sup>®</sup> มีจุดเด่น คือความเชี่ยวชาญสำหรับแต่ละวิชาชีพแบบเฉพาะด้าน
+            ด้วย insights และความสามารถทางด้านภาษาต่างประเทศ ทำให้เรามีความโดดเด่นและแตกต่าง
+            สำหรับแพทย์ ทันตแพทย์ expat รวมถึงพนักงานบริษัท เอกชนและเจ้าของธุรกิจ
+          </p>
+        </div>
+  
+        <div class="why-box">
+          <h4><span class="checkmark">✔</span> วางแผนตามหลักมาตรฐานสากล CFP<sup>®</sup></h4>
+        </div>
+  
+        <div class="why-box">
+          <h4><span class="checkmark">✔</span> การันตีคุณภาพด้วยรางวัลสากล</h4>
+          <p>AFPT,IP</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+ 
+<section class="contact-section">
+    <div class="contact-container">
+      <h2>ติดต่อเรา</h2>
+      <p>กรุณาแจ้งความประสงค์ในการวางแผนการเงินของคุณ</p>
+  
+      <form class="contact-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="name">ชื่อ</label>
+            <input type="text" id="name" name="name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email <span style="color:red">*</span></label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="role">คุณคือ</label>
+            <select id="role" name="role">
+              <option>แพทย์/ทันตแพทย์</option>
+              <option>วิศวกร</option>
+              <option>นักธุรกิจ</option>
+              <option>อื่นๆ</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="interest">ความต้องการของคุณ</label>
+            <select id="interest" name="interest">
+              <option>วางแผนการเงินรอบด้าน</option>
+              <option>วางแผนเกษียณ</option>
+              <option>จัดพอร์ตลงทุน</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group full-width">
+          <label for="message">ระบุต้องการเพิ่มเติมของคุณ <span style="color:red">*</span></label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Submit</button>
+      </form>
+    </div>
+  </section>
+  
+
+
+
+
+
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h2><span class="Kitiya">Kitiya</span><span class="wealth">Wealth</span></h2>
+        <p>กิติยา เสาวกุล<br>
+            ใบอนุญาตตัวแทนประกันชีวิต 1032295<br>
+            ใบอนุญาตผู้วางแผนการลงทุน 107523<br>
+            คุณวุฒิวิชาชีพที่ปรึกษาทางการเงิน​ AFPT™​</p>
+      </div>
+  
+      <div class="footer-section">
+        <h4>องค์กร</h4>
+        <ul>
+          <li>เกี่ยวกับKitiya Wealth®️</li>
+          <li>นโยบายการลงทุน</li>
+          <li>นโยบายความเป็นส่วนตัว</li>
+          <li>ร่วมงานกับเรา</li>
+        </ul>
+      </div>
+  
+      <div class="footer-section">
+        <h4>บริการ</h4>
+        <ul>
+          <li>วางแผนการเงิน</li>
+          <li>คำถามที่พบบ่อย</li>
+        </ul>
+      </div>
+  
+      <div class="footer-section">
+        <h4>เรียนรู้</h4>
+        <ul>
+          <li>Kitiya Saowakul</li>
+          <li>Passive Way</li>
+          <li>บทความ</li>
+          <li>YouTube</li>
+        </ul>
+      </div>
+  
+      <div class="footer-section">
+        <h4>ติดต่อเรา</h4>
+        <ul class="contact-list">
+          <li>📧 kitiya.wealth@gmail.com</li>
+          <li>📘 fb.com/Kitiya Saowakul</li>
+          <li>▶️ @Bigzii (YouTube)</li>
+          <li>💬 @Big-zii (LINE)</li>
+          <li>📞 088-595-4464</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>
