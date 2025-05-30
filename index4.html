@@ -7,506 +7,957 @@
   <meta name="description" content="ลงทุนสบายใจด้วยเทคโนโลยี ลงทุนระยะยาวอย่างมีหลักการ บริหารและปรับพอร์ตอัตโนมัติ ค่าธรรมเนียมการจัดการ 0.5% ต่อปี เริ่มต้นลงทุน Wealth Tech แห่งแรก...">
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-   * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-body {
-  font-family: 'Kanit', sans-serif;
-  line-height: 1.6;
-  color: #1f2d3d;
-  background-color: #f9fafb;
-}
+    body {
+      font-family: 'Kanit', sans-serif;
+      line-height: 1.6;
+      color: #1f2d3d;
+      background-color: #f9fafb;
+    }
 
-.container {
-    display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1140px;
-  margin: auto;
-  padding: 0 1rem;
-}
+    .container {
+      display: flex;
+      flex-direction: column;
+      max-width: 1140px;
+      margin: auto;
+      padding: 0 1rem;
+    }
 
-header {
-  background-color: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
-  padding: 1rem 0;
-}
+    header {
+      background-color: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 1rem 0;
+      position: relative;
+    }
 
-.brand {
-   display: flex;
-  align-items: center;
-  gap: 1rem;
-  justify-content: flex-start;
-}
-
-.brand a img {
-  height: 60px;
-  width: auto;
-  object-fit: contain;
-}
-
-.nav-btn {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-}
-
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    .header-container {
+        display: flex;
   flex-wrap: wrap;
-  margin-top: 1rem;
+  justify-content: space-between;
+  align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand a img {
+      height: 60px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .main-nav {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+    }
+
+    .main-nav a {
+      text-decoration: none;
+      color: #374151;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .main-nav a:hover {
+      color: #00b894;
+    }
+
+    .auth-buttons {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .auth-buttons a {
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .login-btn {
+      background: none;
+      color: #00b894;
+      border: 1px solid #00b894;
+    }
+
+    .signup-btn {
+      background: #00b894;
+      color: white;
+      border: none;
+    }
+
+    .signup-btn:hover,
+    .login-btn:hover {
+      opacity: 0.85;
+    }
+
+    .hero {
+      background: linear-gradient(to right, #e0f7f4, #ffffff);
+      padding: 4rem 0;
+    }
+
+    .hero .container {
+      flex-direction: column;
+    }
+
+    @media (min-width: 992px) {
+      .hero .container {
+        flex-direction: row;
+        align-items: center;
+        gap: 2rem;
+      }
+    }
+
+    .hero-content {
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #374151;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      margin: 1rem 0;
+      color: #1f2d3d;
+      line-height: 1.2;
+    }
+
+    @media (min-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+    }
+
+    .features {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    .features li {
+      margin: 0.8rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .features li::before {
+      content: "✓";
+      color: #00b894;
+      position: absolute;
+      left: 0;
+    }
+
+    .button {
+      display: inline-block;
+      background: #00b894;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+      margin-top: 1rem;
+    }
+
+    .button:hover {
+      background: #019e7c;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .badge {
+      background-color: #ffffff;
+      border-left: 4px solid #00b894;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      flex: 1 1 200px;
+    }
+
+    .hero-image {
+      width: 100%;
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 16px;
+    }
+
+    @media (min-width: 992px) {
+      .hero-image {
+        margin-top: 0;
+        max-width: 500px;
+      }
+    }
+
+    .logo-img {
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      border: 2px solid #e5e7eb;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    @media (min-width: 768px) {
+      .logo-img {
+        height: 78px;
+        width: 78px;
+      }
+    }
+
+    .profile-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .hero-profile-img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center; /* ปรับให้เห็นหน้าชัดเจน */
+  border: 3px solid #e5e7eb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: block;
+  margin: auto;
 }
 
-.main-nav {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
+@media (min-width: 768px) {
+  .hero-profile-img {
+    max-width: 500px;
+    border-width: 4px;
+  }
 }
 
-.main-nav a {
-  text-decoration: none;
-  color: #374151;
-  font-weight: 500;
-  transition: color 0.3s;
-}
+    .footer {
+      background-color: #ffffff;
+      border-top: 1px solid #e5e7eb;
+      padding: 2rem 1rem;
+      font-size: 0.95rem;
+      color: #374151;
+    }
 
-.main-nav a:hover {
-  color: #00b894;
-}
+    .footer-container {
+      max-width: 1140px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-between;
+    }
 
-.auth-buttons a {
-  margin-left: 1rem;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-weight: 500;
-}
+    .footer-brand {
+      flex: 1 1 100%;
+    }
 
-.login-btn {
-  background: none;
-  color: #00b894;
-  border: 1px solid #00b894;
-}
+    @media (min-width: 576px) {
+      .footer-brand {
+        flex: 1 1 45%;
+      }
+    }
 
-.signup-btn {
-  background: #00b894;
-  color: white;
-  border: none;
-}
+    @media (min-width: 992px) {
+      .footer-brand {
+        flex: 1 1 25%;
+      }
+    }
 
-.signup-btn:hover,
-.login-btn:hover {
-  opacity: 0.85;
-}
+    .footer-brand h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
 
-.hero {
-  background: linear-gradient(to right, #e0f7f4, #ffffff);
-  padding: 4rem 0;
-}
+    .footer-brand .Kitiya {
+      color: #00b894;
+      font-weight: bold;
+    }
 
-.hero-content {
-  max-width: 600px;
-}
+    .footer-brand .wealth {
+      color: #374151;
+      font-weight: bold;
+    }
 
-.hero p {
-  font-size: 1.1rem;
-  color: #374151;
-}
+    .footer-section {
+      flex: 1 1 45%;
+      margin-bottom: 1rem;
+    }
 
-.hero h1 {
-  font-size: 2.5rem;
-  margin: 1rem 0;
-  color: #1f2d3d;
-}
+    @media (min-width: 576px) {
+      .footer-section {
+        flex: 1 1 45%;
+      }
+    }
 
-.features {
-  list-style: none;
-  margin-bottom: 2rem;
-}
+    @media (min-width: 992px) {
+      .footer-section {
+        flex: 1 1 15%;
+      }
+    }
 
-.features li {
-  margin: 0.5rem 0;
-  padding-left: 1rem;
+    .footer-section h4 {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #1f2d3d;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .contact-section {
+      background-color: #f1f7fb;
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+
+    .contact-container {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .contact-container h2 {
+      font-size: 1.8rem;
+      color: #1f2d3d;
+      margin-bottom: 0.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .contact-container h2 {
+        font-size: 2rem;
+      }
+    }
+
+    .contact-container p {
+      color: #4b5563;
+      margin-bottom: 2rem;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .form-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .form-group {
+      flex: 1 1 100%;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    @media (min-width: 576px) {
+      .form-group {
+        flex: 1 1 calc(50% - 0.5rem);
+      }
+    }
+
+    .full-width {
+      flex: 1 1 100%;
+    }
+
+    label {
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #1f2937;
+    }
+
+    input,
+    select,
+    textarea {
+      padding: 0.6rem;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-family: inherit;
+      background-color: #fff;
+      resize: none;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #00b894;
+      box-shadow: 0 0 0 2px rgba(0, 184, 148, 0.2);
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 0.8rem;
+      background-color: #0d1f2d;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-size: 1rem;
+    }
+
+    @media (min-width: 576px) {
+      .submit-btn {
+        width: auto;
+        padding: 0.6rem 1.5rem;
+        align-self: flex-start;
+      }
+    }
+
+    .submit-btn:hover {
+      background-color: #122b3a;
+    }
+
+    .why-section {
+      padding: 4rem 1rem;
+      background-color: #ffffff;
+    }
+
+    .why-container {
+      max-width: 1140px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    @media (min-width: 992px) {
+      .why-container {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+    }
+
+    .why-image {
+      flex: 1 1 100%;
+    }
+
+    @media (min-width: 992px) {
+      .why-image {
+        flex: 1 1 50%;
+      }
+    }
+
+    .why-image img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      height: auto;
+    }
+
+    .why-content {
+      flex: 1 1 100%;
+      min-width: 0;
+    }
+
+    @media (min-width: 992px) {
+      .why-content {
+        flex: 1 1 50%;
+      }
+    }
+
+    .why-subtitle {
+      font-size: 0.9rem;
+      color: #4b5563;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .why-title {
+      font-size: 1.5rem;
+      color: #1f2d3d;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+
+    @media (min-width: 768px) {
+      .why-title {
+        font-size: 1.75rem;
+        margin-bottom: 2rem;
+      }
+    }
+
+    .why-box {
+      background-color: #f9fafb;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.04);
+    }
+
+    .why-box h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 0.5rem;
+    }
+
+    .why-box p {
+      font-size: 0.95rem;
+      color: #374151;
+      line-height: 1.6;
+    }
+
+    .checkmark {
+      color: #00b894;
+      font-weight: bold;
+      margin-right: 0.4rem;
+    }
+
+    /* Mobile Navigation */
+    @media (max-width: 991px) {
+      .nav-btn {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        width: 100%;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid #e5e7eb;
+      }
+
+      nav.active {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .main-nav {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .auth-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .auth-buttons a {
+        width: 100%;
+        text-align: center;
+        margin: 0.25rem 0;
+      }
+    }
+
+/* Submenu Styles */
+.has-submenu {
   position: relative;
 }
 
-.features li::before {
-  content: "✓";
-  color: #00b894;
-  position: absolute;
-  left: 0;
-}
-
-.button {
-  background: #00b894;
-  color: #fff;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background 0.3s;
-}
-
-.button:hover {
-  background: #019e7c;
-}
-
-.badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.badge {
-  background-color: #ffffff;
-  border-left: 4px solid #00b894;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-.hero-image img {
-  width: 100%;
-  max-width: 500px;
-  margin-top: 2rem;
-  border-radius: 16px;
-}
-
-@media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .main-nav {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .auth-buttons {
-    margin-top: 1rem;
-  }
-
-  .hero {
-    text-align: center;
-  }
-
-  .hero-image img {
-    margin: 2rem auto 0;
-  }
-
-  .nav-btn {
-    display: block;
-  }
-
-  .brand {
-    justify-content: space-between;
-    width: 100%;
-  }
-}
-.logo-img {
-  height: 78px;
-  width: 78px;
-  border-radius: 78%;
-  object-fit: cover;
-  display: block;
-  border: 2px solid #e5e7eb; /* ขอบสีเทาอ่อน */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* เงาเบาๆ */
-}
-.profile-section {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.profile-img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-.hero-profile-img {
-  width: 500;
-  height: 500px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #e5e7eb; /* ขอบเทาอ่อน */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เงาเบาๆ */
-  display: block;
-  margin: auto;
-}
-.footer {
-  background-color: #ffffff;
-  border-top: 1px solid #e5e7eb;
-  padding: 2rem 1rem;
-  font-size: 0.95rem;
-  color: #374151;
-}
-
-.footer-container {
-  max-width: 1140px;
-  margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: space-between;
-}
-
-.footer-brand h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.footer-brand .Kitiya {
-  color: #00b894;
-  font-weight: bold;
-}
-
-.footer-brand .wealth {
-  color: #374151;
-  font-weight: bold;
-}
-
-.footer-section h4 {
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: #1f2d3d;
-}
-
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-section ul li {
-  margin-bottom: 0.4rem;
-}
-
-.contact-list li {
+.submenu-trigger {
   display: flex;
   align-items: center;
   gap: 0.3rem;
 }
 
-
-
-
-.contact-section {
-  background-color: #f1f7fb;
-  padding: 3rem 1rem;
-  text-align: center;
+.dropdown-icon {
+  font-size: 0.6rem;
+  transition: transform 0.3s ease;
 }
 
-.contact-container {
-  max-width: 900px;
-  margin: auto;
-  background: #fff;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
-
-.contact-container h2 {
-  font-size: 2rem;
-  color: #1f2d3d;
-  margin-bottom: 0.5rem;
-}
-
-.contact-container p {
-  color: #4b5563;
-  margin-bottom: 2rem;
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.form-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.form-group {
-  flex: 1 1 45%;
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-}
-
-.full-width {
-  flex: 1 1 100%;
-}
-
-label {
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  color: #1f2937;
-}
-
-input,
-select,
-textarea {
-  padding: 0.6rem;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  font-size: 1rem;
-  font-family: inherit;
-  background-color: #fff;
-  resize: none;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-  outline: none;
-  border-color: #00b894;
-  box-shadow: 0 0 0 2px rgba(0, 184, 148, 0.2);
-}
-
-.submit-btn {
-  width: 120px;
-  padding: 0.6rem;
-  background-color: #0d1f2d;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s;
-  align-self: flex-start;
-}
-
-.submit-btn:hover {
-  background-color: #122b3a;
-}
-
-@media (max-width: 768px) {
-  .form-group {
-    flex: 1 1 100%;
-  }
-
-  .submit-btn {
-    width: 100%;
-    text-align: center;
-  }
-}
-.why-section {
-  padding: 4rem 1rem;
+.submenu {
+  list-style: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
   background-color: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0;
+  min-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 100;
 }
 
-.why-container {
-  max-width: 1140px;
-  margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  align-items: flex-start;
+.has-submenu:hover .submenu,
+.has-submenu:focus-within .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
-.why-image img {
-  max-width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+.has-submenu:hover .dropdown-icon,
+.has-submenu:focus-within .dropdown-icon {
+  transform: rotate(180deg);
 }
 
-.why-content {
-  flex: 1 1 50%;
-  min-width: 300px;
+.submenu li {
+  padding: 0;
 }
 
-.why-subtitle {
-  font-size: 0.9rem;
-  color: #4b5563;
-  text-transform: uppercase;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+.submenu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  /*color: #374151;*/
+  text-decoration: none;
+  transition: all 0.2s ease;
+  color: #111827 !important;
 }
 
-.why-title {
-  font-size: 1.75rem;
-  color: #1f2d3d;
-  margin-bottom: 2rem;
-}
-
-.why-box {
-  background-color: #f9fafb;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.04);
-}
-
-.why-box h4 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #111827;
-  margin-bottom: 0.5rem;
-}
-
-.why-box p {
-  font-size: 0.95rem;
-  color: #374151;
-  line-height: 1.6;
-}
-
-.checkmark {
+.submenu a:hover {
+  background-color: #f0fdf4;
   color: #00b894;
-  font-weight: bold;
-  margin-right: 0.4rem;
 }
 
-@media (max-width: 768px) {
-  .why-container {
-    flex-direction: column;
+/* Mobile Submenu Styles */
+@media (max-width: 991px) {
+  .submenu {
+    position: static;
+    background-color: #f9fafb;
+    box-shadow: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding-left: 1rem;
   }
 
-  .why-content {
-    flex: 1 1 100%;
+  .menu-item-has-children.active .submenu {
+    max-height: 300px;
+  }
+
+  .dropdown-icon {
+    transition: transform 0.3s ease;
+  }
+
+  .menu-item-has-children.active .dropdown-icon {
+    transform: rotate(180deg);
+  }
+
+  /* ✅ เพิ่มตรงนี้เพื่อให้ font submenu เป็นสีเข้ม */
+  .submenu a {
+    color: #1f2937; /* สีเทาเข้ม - เห็นชัด */
+    font-weight: 500;
+    display: block;
+    padding: 0.5rem 1rem;
+  }
+
+  .submenu a:hover {
+    background-color: #e0f7f4;
+    color: #00b894;
+  }
+}
+@media (max-width: 991px) {
+  .submenu {
+    position: static;
+    box-shadow: none;
+    padding-left: 1rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    background-color: transparent;
+  }
+
+  .has-submenu.active .submenu {
+    max-height: 300px;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .has-submenu.active .dropdown-icon {
+    transform: rotate(180deg);
+  }
+
+  .submenu a {
+    padding: 0.5rem 0;
+  }
+
+  .submenu a:hover {
+   /* background-color: transparent; */
+    background-color: #e0f7f4; /* สีพื้นอ่อนตอน hover */
+    color: #00b894;
+  }
+}
+/* Submenu Styles - Responsive */
+.menu-item-has-children {
+  position: relative;
+}
+
+.submenu-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: none;
+  border: none;
+  font-family: 'Kanit', sans-serif;
+  font-size: 1rem;
+  color: #374151;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.5rem 0;
+}
+
+.dropdown-icon {
+  font-size: 0.6rem;
+  transition: transform 0.3s ease;
+  margin-left: 0.3rem;
+}
+
+.submenu {
+  list-style: none;
+  background-color: #ffffff;
+  border-radius: 6px;
+  padding: 0.5rem 0;
+  min-width: 200px;
+  z-index: 100;
+}
+
+/* Desktop Styles */
+@media (min-width: 992px) {
+  .submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+  }
+
+  .menu-item-has-children:hover .submenu,
+  .menu-item-has-children:focus-within .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .menu-item-has-children:hover .dropdown-icon,
+  .menu-item-has-children:focus-within .dropdown-icon {
+    transform: rotate(180deg);
   }
 }
 
+/* Mobile & Tablet Styles */
+@media (max-width: 991px) {
+  .submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding-left: 1rem;
+    box-shadow: none;
+    width: 100%;
+  }
 
+  .menu-item-has-children.active .submenu {
+    max-height: 300px;
+  }
+
+  .menu-item-has-children.active .dropdown-icon {
+    transform: rotate(180deg);
+  }
+
+  .submenu a {
+    display: block;
+    padding: 0.5rem 0;
+  }
+}
+
+.submenu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #374151;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.submenu a:hover {
+  background-color: #f0fdf4;
+  color: #00b894;
+}
+
+/* Accessibility Improvements */
+.submenu-trigger:focus {
+  outline: 2px solid #00b894;
+  outline-offset: 2px;
+}
+
+.submenu a:focus {
+  outline: none;
+  background-color: #f0fdf4;
+  color: #00b894;
+}
+
+@media (max-width: 991px) {
+  .submenu {
+    position: static;
+    background-color: #f9fafb;
+    box-shadow: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding-left: 1rem;
+  }
+
+  .menu-item-has-children.active .submenu {
+    max-height: 300px; /* หรือ auto ถ้าใช้ JS toggle ดีกว่า */
+  }
+
+  .dropdown-icon {
+    transition: transform 0.3s ease;
+  }
+
+  .menu-item-has-children.active .dropdown-icon {
+    transform: rotate(180deg);
+  }
+}
   </style>
 </head>
 <body>
-  <!-- Header Section -->
-  <header>
+<!-- Header Section -->
+<header>
     <div class="container">
+      <div class="header-container">
         <div class="brand">
           <a href="/" aria-label="Logo">
             <img src="KW.png" alt="Kitiya Wealth Logo" class="logo-img">
           </a>
-          <button class="nav-btn" title="Menu">
-            <em>☰</em>
-          </button>
         </div>
-      <nav>
-        <ul class="main-nav">
-          <li><a href="#">ผลิตภัณฑ์ </a></li>
-          <li><a href="/blog">บริการ</a></li>
-          <li><a href="/howto">วิธีลงทุน</a></li>
-          <li><a href="/contactus">ติดต่อเรา</a></li>
-        </ul>
-        <div class="auth-buttons">
-          <a href="https://app.Kitiyawealth.com/login" class="login-btn">เข้าสู่ระบบ</a>
-          <a href="https://app.Kitiyawealth.com/signup" class="signup-btn">เริ่มต้นลงทุน</a>
-        </div>
-      </nav>
+        <button class="nav-btn" title="Menu" aria-label="Toggle navigation" aria-expanded="false">
+          <span class="menu-icon">☰</span>
+        </button>
+        <nav class="main-navigation">
+          <ul class="main-nav">
+            <li class="menu-item-has-children">
+              <button class="submenu-trigger" aria-expanded="false">
+                ผลิตภัณฑ์ <span class="dropdown-icon">▼</span>
+              </button>
+              <ul class="submenu">
+                <li><a href="/life-insurance">ประกันชีวิต/Life Insurance</a></li>
+                <li><a href="/life-insurance">ประกันสุขภาพ/Health Insurance</a></li>
+                <!-- สามารถเพิ่มเมนูย่อยอื่นๆ ได้ที่นี่ -->   
+              </ul>
+            </li>
+
+            <li class="menu-item-has-children">
+                <button class="submenu-trigger" aria-expanded="false">
+                    บริการ <span class="dropdown-icon">▼</span>
+                </button>
+                <ul class="submenu">
+                  <li><a href="/life-insurance">ประกันชีวิต/Life Insurance</a></li>
+                  <li><a href="/life-insurance">ประกันสุขภาพ/Health Insurance</a></li>
+                  <!-- สามารถเพิ่มเมนูย่อยอื่นๆ ได้ที่นี่ -->   
+                </ul>
+              </li>
+           
+              <li class="menu-item-has-children">
+                <button class="submenu-trigger" aria-expanded="false">
+                    ติดต่อเรา <span class="dropdown-icon">▼</span>
+                </button>
+                <ul class="submenu">
+                  <li><a href="/life-insurance">ประกันชีวิต/Life Insurance</a></li>
+                  <li><a href="/life-insurance">ประกันสุขภาพ/Health Insurance</a></li>
+                  <!-- สามารถเพิ่มเมนูย่อยอื่นๆ ได้ที่นี่ -->   
+                </ul>
+              </li>
+            
+        
+          </ul>
+ 
+        </nav>
+      </div>
     </div>
   </header>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const submenuTriggers = document.querySelectorAll('.submenu-trigger');
+  
+      submenuTriggers.forEach(trigger => {
+        trigger.addEventListener('click', function(e) {
+          // เฉพาะมือถือเท่านั้น
+          if (window.innerWidth <= 991) {
+            e.preventDefault();
+            const parent = this.closest('.menu-item-has-children');
+            const isActive = parent.classList.contains('active');
+  
+            // ปิดทุกเมนูย่อยก่อนเปิดใหม่
+            document.querySelectorAll('.menu-item-has-children').forEach(item => {
+              item.classList.remove('active');
+              item.querySelector('.submenu-trigger').setAttribute('aria-expanded', 'false');
+            });
+  
+            if (!isActive) {
+              parent.classList.add('active');
+              this.setAttribute('aria-expanded', 'true');
+            }
+          }
+        });
+      });
+    });
+  </script>
+  
+  
+  
+  
+
 
   <!-- Hero Section -->
   <section class="hero">
@@ -531,27 +982,16 @@ textarea:focus {
         </div>
       </div>
       <div class="hero-image">
-        <img src="pf.jpg" alt="Kitiya Wealth Advisor" class="hero-profile-img">
+        <img src="pf.jpg" alt="Kitiya Wealth Advisor - กิติยา เสาวกุล" class="hero-profile-img" loading="lazy">
       </div>
     </div>
   </section>
 
-  <!-- Scripts -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const navBtn = document.querySelector('.nav-btn');
-      const nav = document.querySelector('nav');
-      navBtn.addEventListener('click', function() {
-        nav.classList.toggle('active');
-      });
-    });
-  </script>
-
-
-<section class="why-section">
+  <!-- Why Section -->
+  <section class="why-section">
     <div class="why-container">
       <div class="why-image">
-        <img src="big1.jpg" alt="Kitiya Wealth®️">
+        <img src="big2.jpg" alt="Kitiya Wealth®️">
       </div>
       <div class="why-content">
         <p class="why-subtitle">WHY KITIYA WEALTH®</p>
@@ -578,8 +1018,8 @@ textarea:focus {
     </div>
   </section>
   
- 
-<section class="contact-section">
+  <!-- Contact Section -->
+  <section class="contact-section">
     <div class="contact-container">
       <h2>ติดต่อเรา</h2>
       <p>กรุณาแจ้งความประสงค์ในการวางแผนการเงินของคุณ</p>
@@ -620,13 +1060,8 @@ textarea:focus {
       </form>
     </div>
   </section>
-  
 
-
-
-
-
-
+  <!-- Footer -->
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-brand">
@@ -677,6 +1112,28 @@ textarea:focus {
       </div>
     </div>
   </footer>
-  
+
+  <!-- Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const navBtn = document.querySelector('.nav-btn');
+      const nav = document.querySelector('nav');
+      
+      navBtn.addEventListener('click', function() {
+        nav.classList.toggle('active');
+        
+        // Change icon based on state
+        const icon = navBtn.querySelector('span');
+        if (nav.classList.contains('active')) {
+          icon.textContent = '✕';
+        } else {
+          icon.textContent = '☰';
+        }
+      });
+    });
+  </script>
+
+
+<a href="https://liff.line.me/1645278921-kWRPP32q/?accountId=jittawealth" target="_blank" class="block hover:scale-110 transition-all duration-500 w-11 h-11 rounded-lg overflow-hidden shadow-lg did-fadeIn"> <img src="line.png" alt="Line" width="44" height="44"> </a>
 </body>
 </html>
